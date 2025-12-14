@@ -1,0 +1,12 @@
+home_position:
+- 0.3
+- -0.1
+- 0.7
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+is_poll_end: false
+is_right_arm: true
+stepper_position: 65625
+u2d2: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT62AO7X-if00-port0

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="checkTerrainConn" default="true"/>
+
+
+  <include file="$(find local_planner)/launch/local_planner_indoor.launch" />
+
+
+  <include file="$(find terrain_analysis)/launch/terrain_analysis_indoor.launch" />
+
+  <include file="$(find terrain_analysis_ext)/launch/terrain_analysis_ext_indoor.launch" >
+    <arg name="checkTerrainConn" value="$(arg checkTerrainConn)"/>
+  </include>
+ 
+
+  <include file="$(find sensor_scan_generation)/launch/sensor_scan_generation.launch" />
+
+  <include file="$(find loam_interface)/launch/loam_interface.launch" />
+
+  <!-- <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="true"/> -->
+
+</launch>

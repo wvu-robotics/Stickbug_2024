@@ -1,0 +1,23 @@
+#!/bin/bash
+
+python3.9 -m pip install yolov8
+
+sudo apt-get install python3.9-dev
+
+# Force reinstall of psutil using Python 3.9
+python3.9 -m pip install --upgrade --force-reinstall psutil
+
+# Force reinstall of Pillow using Python 3.9
+python3.9 -m pip install --upgrade --force-reinstall Pillow
+
+# Force reinstall of kiwisolver using Python 3.9
+python3.9 -m pip install --upgrade --force-reinstall kiwisolver
+
+# Force reinstall of pandas using Python 3.9
+python3.9 -m pip install --upgrade --force-reinstall pandas
+
+# Force reinstall of matplotlib using Python 3.9
+python3.9 -m pip install --upgrade --force-reinstall matplotlib
+
+echo "All specified packages have been reinstalled using Python 3.9."
+

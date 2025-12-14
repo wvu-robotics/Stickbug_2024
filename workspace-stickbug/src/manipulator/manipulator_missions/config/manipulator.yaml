@@ -1,0 +1,60 @@
+############################################################# OVERVIEW ##################################################
+#  this file serves as the common yaml file holding all the parameters for the manipulator entity of the robot,
+#  SPECIFIC TO THE STICKBUG MANIPULATOR
+#
+#  NOTE: that muliple packages may require the same parameter. Therfore, only create one instance in this file, and comment
+#        any duplicates
+#  
+#  sections of paramters:
+#   1. 
+############################################# GRIPPER_EE PARAMETERS ######################################################
+
+# comp stability issue when acutaion_x is large
+
+actuation_x : 0.123      # the dx position from the end effector base to the desired actuation location on the gripper [m]
+actuation_y : 0          # the dy position from the end effector base to the desired actuation location on the gripper [m]
+actuation_z : 0          # the dz position from the end effector base to the desired actuation location on the gripper [m]
+
+max_position : 0.79      # max position of the end effector motor [rad]
+min_position : 0.0       # min position of the end effector motor [rad]
+
+############################################# NOIS WRIST PARAMETERS #######################################################
+
+w1_x : 0        # wrist link 1, x length, in wrist base frame [m]
+w1_y : 0        # wrist link 1, y length, in wrist base frame [m]
+w1_z : 0        # wrist link 1, z length, in wrist base frame [m]
+
+w2_x : 0.024    # wrist link 2, x length, in wrist motor 1 frame [m] 
+w2_y : 0        # wrist link 2, y length, in wrist motor 1 frame [m]
+w2_z : 0        # wrist link 2, z length, in wrist motor 1 frame [m]
+
+w3_x : 0        # wrist link 3, x length, in wrist motor 2 frame [m]
+w3_y : 0        # wrist link 3, y length, in wrist motor 2 frame [m]
+w3_z : 0.0      # wrist link 3, z length, in wrist motor 2 frame [m]
+
+
+############################################# SCARA_ARM PARAMETERS ######################################
+
+bicep_length : 0.20         # length of first link from shaft of shoulder motor to elbow motor in [m]
+forearm_length : 0.155      # length of second link from shaft of elbow motor to end effector tip in [m]
+
+collar_bone_x : 0.102       # x position of the collar bone in the base frame [m]
+collar_bone_y : -.0444      # y position of the collar bone in the base frame [m]
+collar_bone_z : 0.05        # z position of the collar bone in the base frame [m]
+collar_bone_yaw : .5236     # yaw of the collar bone in the base frame [rad]
+
+# satisfied in launch files due to muliple left / right arms being present
+#is_right_arm : false      # determies to use the left or right arm kinematic solution
+
+######################################### STEPPER MOTOR PARAMETERS ######################################
+
+DIR : 15      #  GPIO pin 15 on pi is direction
+STEP : 14     #  GPIO pin 14 on pi is the step pulse
+
+CCW : True    # set counter clockwise pin value for pi
+CW : False    # set clockwise pin value for pi
+
+delay : .001  # time delay between steps [sec]
+#########################################################################################################
+
+

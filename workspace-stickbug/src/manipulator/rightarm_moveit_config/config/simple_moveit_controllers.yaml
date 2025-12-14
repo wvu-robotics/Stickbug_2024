@@ -1,0 +1,29 @@
+controller_list:
+  - name: arm0
+    action_ns: position_control
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - slider
+      - shoulder
+      - elbow
+      - w1
+      - w2
+  - name: arm_velocity_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - slider
+      - shoulder
+      - elbow
+      - w1
+      - w2
+  - name: endeffector_position_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - e1
+      - e2
+      - e3

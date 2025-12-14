@@ -1,0 +1,42 @@
+ Terrain Param
+double scanVoxelSize = 0.05; --- Sampling under point cloud
+double decayTime = 2.0; --- Point cloud time difference threshold Greater than will not be processed
+double noDecayDis = 4.0; --- Point cloud distance threshold Less than this threshold, regardless of the time difference
+double clearingDis = 8.0; --- Points outside this distance will be cleared
+bool clearingCloud = false; --- Clear the point cloud beyond the distance
+bool useSorting = true;
+double quantileZ = 0.25; --- Consider that the minimum elevation near the ground will change
+bool considerDrop = false;
+bool limitGroundLift = false;
+double maxGroundLift = 0.15;
+bool clearDyObs = false;
+double minDyObsDis = 0.3;
+double minDyObsAngle = 0;
+double minDyObsRelZ = -0.5;
+double minDyObsVFOV = -16.0;
+double maxDyObsVFOV = 16.0;
+int minDyObsPointNum = 1;
+bool noDataObstacle = false;
+int noDataBlockSkipNum = 0;
+int minBlockPointNum = 10; --- Calculate the minimum number of point clouds for the effective elevation
+double vehicleHeight = 1.5; --- Height of vehicle
+int voxelPointUpdateThre = 100; --- The minimum number of voxel mesh point clouds to be processed
+double voxelTimeUpdateThre = 2.0; --- Update voxel mesh time threshold
+double minRelZ = -1.5; --- Minimum height of point cloud processing
+double maxRelZ = 0.2; --- Maximum height of point cloud processing
+double disRatioZ = 0.2; --- The ratio of height to distance of point cloud processing
+// terrain voxel parameters
+float terrainVoxelSize = 1.0; --- The resolution of the terrain
+int terrainVoxelShiftX = 0; --- The offset between the terrain center and the vehicle body
+int terrainVoxelShiftY = 0; --- The offset between the terrain center and the vehicle body
+const int terrainVoxelWidth = 21; --- The width of the terrain
+int terrainVoxelHalfWidth = (terrainVoxelWidth - 1) / 2;
+const int terrainVoxelNum = terrainVoxelWidth * terrainVoxelWidth;
+// planar voxel parameters
+float planarVoxelSize = 0.2; --- The resolution of the plane
+const int planarVoxelWidth = 51; --- The width of the plane
+int planarVoxelHalfWidth = (planarVoxelWidth - 1) / 2;
+const int planarVoxelNum = planarVoxelWidth * planarVoxelWidth;
+
+
+

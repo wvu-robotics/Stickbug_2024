@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="poll_arm_left" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find poll_arm_left)/urdf/poll_arm_left.gazebo.xacro" />
+
+  <xacro:macro name="poll_arm_left" params="parent_link ns">
+
+    <!--joint name="${ns}/lift2base" type="fixed">
+      <parent link="${parent_link}"/>
+      <child link="${ns}/base"/>
+      <axis xyz="0 0 0" />
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <link
+      name="${ns}/base">
+      <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value=".0001"/>
+      <inertia
+        ixx="0.0001" ixy="0.0001" ixz="0.0001"
+        iyy="0.0001" iyz="0.0001"
+        izz="0.0001"/>
+      </inertial>
+    </link>-->
+
+    <link
+      name="${ns}/box">
+      <inertial>
+        <origin
+          xyz="-0.0294836466854796 0.00650699178978326 0.044874078657663"
+          rpy="0 0 0" />
+        <mass
+          value="1.25224595398726" />
+        <inertia
+          ixx="0.00206596064394956"
+          ixy="-0.000334896166615364"
+          ixz="0.000136948453654299"
+          iyy="0.0035115970252851"
+          iyz="-4.17254634185765E-05"
+          izz="0.00431158338218049" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/box.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/box.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/slider"
+      type="prismatic">
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <parent
+        link="${parent_link}" />
+      <child
+        link="${ns}/box" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="0.01"
+        upper="1.3"
+        effort="100"
+        velocity=".5" />
+      <dynamics
+        damping="0.2" />
+    </joint>
+    <link
+      name="${ns}/bicep">
+      <inertial>
+        <origin
+          xyz="0.19577236492752 -0.0256170060224436 0.030251757517972"
+          rpy="0 0 0" />
+        <mass
+          value="0.0881583450015477" />
+        <inertia
+          ixx="4.02190655717306E-05"
+          ixy="9.41441514112841E-09"
+          ixz="4.66388635592044E-08"
+          iyy="2.35490419805005E-05"
+          iyz="-9.36030697866667E-08"
+          izz="3.32834464790013E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/bicep.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/bicep.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/shoulder"
+      type="revolute">
+      <origin
+        xyz="0.10198 0.044401 0.019165"
+        rpy="0 0 0.5236" />
+      <parent
+        link="${ns}/box" />
+      <child
+        link="${ns}/bicep" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort="10"
+        velocity="1" />
+      <dynamics
+        damping="0.01"/>
+    </joint>
+    <link
+      name="${ns}/forearm">
+      <inertial>
+        <origin
+          xyz="0.0765243373190795 0.00763087662935313 0.0278702986201432"
+          rpy="0 0 0" />
+        <mass
+          value="0.0881583450015477" />
+        <inertia
+          ixx="4.02190655717306E-05"
+          ixy="9.41441514112841E-09"
+          ixz="4.66388635592044E-08"
+          iyy="2.35490419805005E-05"
+          iyz="-9.36030697866667E-08"
+          izz="3.32834464790013E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/forearm.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/forearm.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/elbow"
+      type="revolute">
+      <origin
+        xyz="0.1959 -0.040686 0.0024841"
+        rpy="0 0 -1.5708" />
+      <parent
+        link="${ns}/bicep" />
+      <child
+        link="${ns}/forearm" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort="10"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/w1_link">
+      <inertial>
+        <origin
+          xyz="0.011999849295342 0.000549087822445393 0.0223834540031007"
+          rpy="0 0 0" />
+        <mass
+          value="0.0565320862795783" />
+        <inertia
+          ixx="1.0226625085126E-05"
+          ixy="-6.10475234166538E-10"
+          ixz="7.97796107526984E-10"
+          iyy="1.43894864274769E-05"
+          iyz="3.44003507752819E-07"
+          izz="1.4389503019841E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/w1_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/w1_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/w1"
+      type="revolute">
+      <origin
+        xyz="0.15435 0 0.0058612"
+        rpy="0 0 0" />
+      <parent
+        link="${ns}/forearm" />
+      <child
+        link="${ns}/w1_link" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort="1"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/w2_link">
+      <inertial>
+        <origin
+          xyz="0.0566451733011975 -0.00141725658574912 0.0284323416048119"
+          rpy="0 0 0" />
+        <mass
+          value="0.153757182920479" />
+        <inertia
+          ixx="9.61201704567482E-05"
+          ixy="-2.53181854057694E-06"
+          ixz="1.28235405708061E-05"
+          iyy="0.000113585627853035"
+          iyz="-2.70973268265226E-06"
+          izz="6.51970121574257E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/w2_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/w2_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/w2"
+      type="revolute">
+      <origin
+        xyz="0.024 -0.0222 0.021834"
+        rpy="-1.5708 0 0" />
+      <parent
+        link="${ns}/w1_link" />
+      <child
+        link="${ns}/w2_link" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort="1"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/cam_link">
+      <inertial>
+        <origin
+          xyz="-0.0113814657659481 -3.77656326211451E-08 -8.96828082673773E-05"
+          rpy="0 0 0" />
+        <mass
+          value="0.039484046404376" />
+        <inertia
+          ixx="1.13008734896739E-05"
+          ixy="-1.1840327216836E-12"
+          ixz="-1.1184981555834E-08"
+          iyy="7.34442345562825E-06"
+          iyz="2.14724251253116E-11"
+          izz="7.39890475454633E-06" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/cam_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/cam_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/cam_joint"
+      type="fixed">
+      <origin
+        xyz="0.063863 0 0.083432"
+        rpy="0 0.2618 0" />
+      <parent
+        link="${ns}/w2_link" />
+      <child
+        link="${ns}/cam_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="${ns}/e1_link">
+      <inertial>
+        <origin
+          xyz="0.00768377159854705 0.00530600599131281 -0.000730992899423188"
+          rpy="0 0 0" />
+        <mass
+          value="0.00225996756513805" />
+        <inertia
+          ixx="1.30412723697187E-07"
+          ixy="9.73218559749733E-08"
+          ixz="2.16169394663049E-08"
+          iyy="1.966205244536E-07"
+          iyz="-1.2986245459416E-08"
+          izz="3.15647081687985E-07" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e1_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e1_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/e1"
+      type="revolute">
+      <origin
+        xyz="0.077 0.011263 0.0070007"
+        rpy="-1.0472 0 0" />
+      <parent
+        link="${ns}/w2_link" />
+      <child
+        link="${ns}/e1_link" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort=".01"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/e2_link">
+      <inertial>
+        <origin
+          xyz="0.00768377159939804 0.00530600599028475 -0.000730992897713945"
+          rpy="0 0 0" />
+        <mass
+          value="0.00225996756505407" />
+        <inertia
+          ixx="1.30412723709295E-07"
+          ixy="9.73218559904026E-08"
+          ixz="2.16169394327849E-08"
+          iyy="1.96620524444531E-07"
+          iyz="-1.2986245443103E-08"
+          izz="3.15647081713528E-07" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e2_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e2_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/e2"
+      type="revolute">
+      <origin
+        xyz="0.077 0.0074446 0.039404"
+        rpy="1.0472 0 0" />
+      <parent
+        link="${ns}/w2_link" />
+      <child
+        link="${ns}/e2_link" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort=".01"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/e3_link">
+      <inertial>
+        <origin
+          xyz="0.00768377159880085 0.00530600599161343 -0.000730992902174321"
+          rpy="0 0 0" />
+        <mass
+          value="0.00225996756527347" />
+        <inertia
+          ixx="1.30412723718879E-07"
+          ixy="9.73218559573204E-08"
+          ixz="2.16169395180174E-08"
+          iyy="1.96620524429933E-07"
+          iyz="-1.2986245490849E-08"
+          izz="3.15647081641822E-07" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e3_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/e3_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/e3"
+      type="revolute">
+      <origin
+        xyz="0.077 -0.018708 0.019895"
+        rpy="3.1416 0 0" />
+      <parent
+        link="${ns}/w2_link" />
+      <child
+        link="${ns}/e3_link" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-1.57"
+        upper="1.57"
+        effort=".01"
+        velocity="1" />
+      <dynamics
+        damping="0.01" />
+    </joint>
+    <link
+      name="${ns}/end_link">
+      <inertial>
+        <origin
+          xyz="-0.00224236893916069 3.51872006532084E-08 -3.59307918973428E-08"
+          rpy="0 0 0" />
+        <mass
+          value="0.00244973338644465" />
+        <inertia
+          ixx="2.1728168358708E-07"
+          ixy="-1.95917302130553E-13"
+          ixz="3.07605742817941E-13"
+          iyy="1.14231479742372E-07"
+          iyz="9.90134628383345E-13"
+          izz="1.14231411420646E-07" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/end_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://poll_arm_left/meshes/end_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${ns}/end_joint"
+      type="fixed">
+      <origin
+        xyz="0.12293 0 0.0221"
+        rpy="1.5708 0 0" />
+      <parent
+        link="${ns}/w2_link" />
+      <child
+        link="${ns}/end_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+
+    <link name="${ns}/camera_frame"/>
+    <joint
+  	name="${ns}/cam_link2cam_frame"
+  	type="fixed">
+  	<parent link="${ns}/cam_link"/>
+  	<child link="${ns}/camera_frame"/>
+    <origin
+      xyz="0.0 0.0 0.0"
+      rpy="-1.57 0.0 -1.57" />
+  </joint>
+
+
+    <xacro:poll_arm_left_gazebo ns="${ns}"/>
+
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,15 @@
+controller_list:
+ - name: right_arm_controller
+   action_ns: follow_joint_trajectory
+   type: FollowJointTrajectory
+   default: true
+   joints:
+    - slider
+    - shoulder
+    - elbow
+    - w1
+    - w2
+    - e1
+    - e2
+    - e3
+

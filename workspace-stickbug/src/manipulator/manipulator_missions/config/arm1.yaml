@@ -1,0 +1,12 @@
+home_position:
+- 0.3
+- 0.25
+- 0.2
+- 0.0
+- 0.0
+- 0.7071
+- -0.7071
+is_poll_end: true
+is_right_arm: false
+stepper_position: 23438
+u2d2: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT62AFNO-if00-port0

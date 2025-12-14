@@ -1,0 +1,50 @@
+Local Param 
+string pathFolder; --- Use matlab Generate the file path of the path collection
+double vehicleLength = 0.6; --- The length of the vehicle , Company m
+double vehicleWidth = 0.6; --- The width of the vehicle , Company m
+double sensorOffsetX = 0; --- The offset between the sensor coordinate system and the center of the vehicle body
+double sensorOffsetY = 0; --- The offset between the sensor coordinate system and the center of the vehicle body
+bool twoWayDrive = true; --- Two way drive
+double laserVoxelSize = 0.05; --- Down sampling voxel grid leaf size
+double terrainVoxelSize = 0.2; --- Down sampling voxel grid leaf size
+bool useTerrainAnalysis = false; --- Whether to use the point cloud information after ground segmentation
+bool checkObstacle = true;
+bool checkRotObstacle = false;
+double adjacentRange = 3.5; --- The distance when clipping the point cloud
+double obstacleHeightThre = 0.2; --- Obstacle height threshold
+double groundHeightThre = 0.1; --- Ground height threshold
+double costHeightThre = 0.1; --- Calculate the weight of path penalty score
+double costScore = 0.02; --- Minimum penalty score
+bool useCost = false;
+const int laserCloudStackNum = 1; --- Number of cached laser point cloud frames
+int laserCloudCount = 0; --- When laserCloudStackNum = 1 when , It's not used for the time being
+int pointPerPathThre = 2; --- Each path needs to have several occluded points
+double minRelZ = - 0.5; --- When ground segmentation is not used , The minimum height of the cloud when clipping
+double maxRelZ = 0.25; --- When ground segmentation is not used , The maximum height when clipping the point cloud
+double maxSpeed = 1.0; --- Maximum speed
+double dirWeight = 0.02; --- The weight of the steering angle when calculating the score
+double dirThre = 90.0; --- Maximum steering angle
+bool dirToVehicle = false; --- Whether to calculate the blocked path in the main direction of the vehicle
+double pathScale = 1.0; --- Path scale
+double minPathScale = 0.75; --- Minimum path scale
+double pathScaleStep = 0.25; --- Adjustment step of path scale
+bool pathScaleBySpeed = true; --- Whether to adjust the path scale according to the speed
+double minPathRange = 1.0; --- Minimum path distance
+double pathRangeStep = 0.5; --- Adjustment step of path range
+bool pathRangeBySpeed = true; --- Whether to adjust the range of the path according to the speed
+bool pathCropByGoal = true; --- Whether according to the target point + goalClearRange Filter point cloud data
+bool autonomyMode = false;
+double autonomySpeed = 1.0;
+double goalClearRange = 0.5; --- When pathCropByGoal = true when , The point cloud distance exceeds the target point + This value is not processed
+double goalX = 0; --- Local path target point
+double goalY = 0; --- Local path target point
+----- The following parameters are set when generating path sampling information , In another blog post -----
+const int pathNum = 343;
+const int groupNum = 7;
+float gridVoxelSize = 0.02;
+float searchRadius = 0.45;
+float gridVoxelOffsetX = 3.2;
+float gridVoxelOffsetY = 4.5;
+const int gridVoxelNumX = 161;
+const int gridVoxelNumY = 451;
+const int gridVoxelNum = gridVoxelNumX * gridVoxelNumY;

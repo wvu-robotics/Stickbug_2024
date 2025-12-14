@@ -1,0 +1,16 @@
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  manipulator_missions/config/manipulator.yaml
+#
+#
+############################################# POLLINATION_EE PARAMETERS ######################################
+
+actuation_x : .02        # the dx position from the end effector base to the desired actuation location on the gripper [m]
+actuation_y : 0          # the dy position from the end effector base to the desired actuation location on the gripper [m]
+actuation_z : 0          # the dz position from the end effector base to the desired actuation location on the gripper [m]
+
+max_position : .05       # max position of the end effector motor [m]
+min_position : 0.0       # min position of the end effector motor [m]
+
+##########################################################################################################

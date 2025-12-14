@@ -1,0 +1,21 @@
+<launch>
+ <!-- ########################################### OVERVIEW ######################################
+        
+ The purpose of this launch file is to launch any intermediate/low-level algorithms
+ that would be common between high-level algorithms (i.e. waypoint_nav, teleop)
+ In addition to NOT directly interfacing with hardware   
+        
+ launches:
+  1) drive kinematics
+  2) localization  
+ -->
+ <!-- ######################################### ARGUMENTS ######################################-->
+
+ <!--######################################### ALGORITHMS ######################################-->
+   <!-- drive kinematics -->
+   <node name="kiwi_drive" pkg="kiwi_drive"  type="kiwi_drive"/>
+
+   <!-- kiwi drive odometery
+   <node pkg="kiwi_drive" name="kiwi_odom" type="kiwi_odom"/> -->
+
+</launch>

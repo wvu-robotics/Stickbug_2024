@@ -1,0 +1,39 @@
+<launch>
+<!--############################################ OVERVIEW ##########################################
+ The purpose of this launch file is to serve as the top-most level for basic autonomy of Stickbug robot
+
+ launches:
+  1. robot model to parameter sever
+  2. rviz 
+  3. simple drivebase autonomy
+  4. Hardware vs. Simulation
+    4.1 Hardware:    a joint state publisher with all 39 of stickbug's joints
+    4.2 Simulation:  launches gazebo and spawns robot with 3 arms
+
+-->
+<!--############################################ ARGUMENTS ##########################################-->
+  <arg name="robot_namespace" default="stickbug"/>
+  
+
+<!--############################################ ALGORITHMS #########################################-->
+
+      <!-- stickbug all joints publisher 
+      <node name="stickbug_joint_pub" pkg="stickbug_missions" type="stickbug_joint_pub" 
+        output="screen" ns ="$(arg robot_namespace)"/>-->
+
+      <!-- stickbug moveit model -->  
+      <remap from="joint_states" to="stickbug/joint_states"/>
+      <include file="$(find stickbug_moveit_config)/launch/demo.launch"/>
+   
+      
+
+    
+
+       
+      
+    
+
+
+  <!--============================================================================================-->
+
+</launch>

@@ -1,0 +1,103 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to be a high-level "go-to-pose" mission using direct
+  position kinematics 
+  
+  launches:
+    1. manipulator position kinematics
+    2. hardware vs. simulation (has fake flower publisher)
+    3. autonomy or idle
+    4. flower manager
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <arg name="robot_namespace" default="stickbug/arm1"/>
+  <arg name="use_hardware"    default="true"/>
+  <arg name="is_right_arm"    default="false"/>
+  <arg name="solo"            default="false"/>
+  <arg name="auto"            default="false"/>
+  <arg name="common_frame"    default="stickbug/arm1/base"/>
+  
+
+  <!--##################################### PARAMETERS ##########################################-->
+  <group ns="$(arg robot_namespace)">
+      <!-- load common manipulator paramters -->
+      <rosparam command="load" file="$(find manipulator_missions)/config/manipulator.yaml" subst_value="true"/>
+      <param name="common_frame" value="$(arg common_frame)"/>
+
+      <!-- load arm 1 specific params if arm 1-->
+      <group if="$(eval robot_namespace == 'stickbug/arm1')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm1.yaml" subst_value="true"/>
+      </group>
+      <!-- load arm 2 specific params if arm 2-->
+      <group if="$(eval robot_namespace == 'stickbug/arm2')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm2.yaml" subst_value="true"/>
+      </group>
+      <!-- load arm 3 specific params if arm 3-->
+      <group if="$(eval robot_namespace == 'stickbug/arm3')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm3.yaml" subst_value="true"/>
+      </group>
+      <!-- load arm 4 specific params if arm 4-->
+      <group if="$(eval robot_namespace == 'stickbug/arm4')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm4.yaml" subst_value="true"/>
+      </group>
+      <!-- load arm 5 specific params if arm 5-->
+      <group if="$(eval robot_namespace == 'stickbug/arm5')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm5.yaml" subst_value="true"/>
+      </group>
+      <!-- load arm 6 specific params if arm 6-->
+      <group if="$(eval robot_namespace == 'stickbug/arm6')">
+          <rosparam command="load" file="$(find manipulator_missions)/config/arm6.yaml" subst_value="true"/>
+      </group>
+
+  </group>
+
+
+
+<!--###################################### ALGORITHMS #########################################-->
+  <group ns="$(arg robot_namespace)">
+   
+    
+    <!-- solo arm________________________________________________________________________-->
+    <group if="$(eval solo == true)">
+         <include file="$(find manipulator_missions)/launch/solo_arm_robot_description.launch">
+            <arg name="is_right_arm" value="$(arg is_right_arm)"/>
+            <arg name="use_hardware" value="$(arg use_hardware)"/>
+            <arg name="robot_namespace" value="$(arg robot_namespace)"/>
+          </include>
+    </group>
+
+
+    <!-- manipulator position kinematics_______________________________________________ 
+    <include file="$(find manipulator_missions)/launch/manipulator_kinematics.launch">
+          <arg name="is_right_arm" value="$(arg is_right_arm)"/>
+    </include>-->
+
+    <!-- end effector kinematics -->
+    <include file="$(find pollination_ee)/launch/pollination_ee.launch"/>
+
+    <!-- flower perception_______________________________________________________________-->
+    <node pkg="flower_manager" name="flower_manager" type="flower_manager.py" output="screen"/>
+
+
+    <!-- autonomomy ________________________________________________________________________________-->
+    <group if="$(eval auto == true)">
+          <node pkg="manipulator_missions" name="arm_autonomy" type="arm_autonomy.py" output="screen"/>
+    </group>
+
+
+
+    <!-- hardware vs simulation_________________________________________________________-->
+    <group if="$(eval use_hardware == true)">
+          <!-- launch manipulator hardware -->
+          <include file="$(find manipulator_missions)/launch/hardware.launch"/>
+    </group>
+    <group if="$(eval use_hardware == false)">
+          <!-- launch fake flower pub -->
+          <node pkg="flower_manager" name="fake_flower_pub" type="fake_flower_pub.py" output="screen"/>
+    </group>
+
+
+ 
+  </group>
+
+</launch>

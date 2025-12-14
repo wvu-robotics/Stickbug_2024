@@ -1,0 +1,552 @@
+arm_position_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - stickbug/arm2/slider
+    - stickbug/arm2/shoulder
+    - stickbug/arm2/elbow
+    - stickbug/arm2/w1
+    - stickbug/arm2/w2
+    - stickbug/arm4/slider
+    - stickbug/arm4/shoulder
+    - stickbug/arm4/elbow
+    - stickbug/arm4/w1
+    - stickbug/arm4/w2
+    - stickbug/arm6/slider
+    - stickbug/arm6/shoulder
+    - stickbug/arm6/elbow
+    - stickbug/arm6/w1
+    - stickbug/arm6/w2
+    - stickbug/arm1/slider
+    - stickbug/arm1/shoulder
+    - stickbug/arm1/elbow
+    - stickbug/arm1/w1
+    - stickbug/arm1/w2
+    - stickbug/arm3/slider
+    - stickbug/arm3/shoulder
+    - stickbug/arm3/elbow
+    - stickbug/arm3/w1
+    - stickbug/arm3/w2
+    - stickbug/arm5/slider
+    - stickbug/arm5/shoulder
+    - stickbug/arm5/elbow
+    - stickbug/arm5/w1
+    - stickbug/arm5/w2
+  gains:
+    stickbug/arm2/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+arm_velocity_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints:
+    - stickbug/arm2/slider
+    - stickbug/arm2/shoulder
+    - stickbug/arm2/elbow
+    - stickbug/arm2/w1
+    - stickbug/arm2/w2
+    - stickbug/arm4/slider
+    - stickbug/arm4/shoulder
+    - stickbug/arm4/elbow
+    - stickbug/arm4/w1
+    - stickbug/arm4/w2
+    - stickbug/arm6/slider
+    - stickbug/arm6/shoulder
+    - stickbug/arm6/elbow
+    - stickbug/arm6/w1
+    - stickbug/arm6/w2
+    - stickbug/arm1/slider
+    - stickbug/arm1/shoulder
+    - stickbug/arm1/elbow
+    - stickbug/arm1/w1
+    - stickbug/arm1/w2
+    - stickbug/arm3/slider
+    - stickbug/arm3/shoulder
+    - stickbug/arm3/elbow
+    - stickbug/arm3/w1
+    - stickbug/arm3/w2
+    - stickbug/arm5/slider
+    - stickbug/arm5/shoulder
+    - stickbug/arm5/elbow
+    - stickbug/arm5/w1
+    - stickbug/arm5/w2
+  gains:
+    stickbug/arm2/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+arm_effort_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - stickbug/arm2/slider
+    - stickbug/arm2/shoulder
+    - stickbug/arm2/elbow
+    - stickbug/arm2/w1
+    - stickbug/arm2/w2
+    - stickbug/arm4/slider
+    - stickbug/arm4/shoulder
+    - stickbug/arm4/elbow
+    - stickbug/arm4/w1
+    - stickbug/arm4/w2
+    - stickbug/arm6/slider
+    - stickbug/arm6/shoulder
+    - stickbug/arm6/elbow
+    - stickbug/arm6/w1
+    - stickbug/arm6/w2
+    - stickbug/arm1/slider
+    - stickbug/arm1/shoulder
+    - stickbug/arm1/elbow
+    - stickbug/arm1/w1
+    - stickbug/arm1/w2
+    - stickbug/arm3/slider
+    - stickbug/arm3/shoulder
+    - stickbug/arm3/elbow
+    - stickbug/arm3/w1
+    - stickbug/arm3/w2
+    - stickbug/arm5/slider
+    - stickbug/arm5/shoulder
+    - stickbug/arm5/elbow
+    - stickbug/arm5/w1
+    - stickbug/arm5/w2
+  gains:
+    stickbug/arm2/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm2/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm4/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm6/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm1/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm3/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/slider:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/shoulder:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/elbow:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w1:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    stickbug/arm5/w2:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

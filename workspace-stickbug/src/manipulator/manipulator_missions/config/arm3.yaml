@@ -1,0 +1,12 @@
+home_position:
+- 0.3
+- 0.1
+- 0.6
+- 0.0
+- 0.0
+- 0.0
+- 1.0
+is_poll_end: false
+is_right_arm: false
+stepper_position: 85937
+u2d2: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3WHRXC-if00-port0

@@ -1,0 +1,23 @@
+- git: {local-name: drivebase/kiwi_drive, uri: 'git@github.com:wvu-robotics/kiwi_drive.git', version: main}
+- git: {local-name: drivebase/simple_odom, uri: 'git@github.com:wvu-robotics/simple_odom.git', version: main}
+- git: {local-name: drivebase/simple_waypoint_nav, uri: 'git@github.com:wvu-robotics/simple_waypoint_nav.git', version: holonomic}
+- git: {local-name: drivebase/roboteq_hw_interface, uri: 'git@github.com:wvu-robotics/roboteq_hw_interface.git', version: ubuntu20cpp}
+
+- git: {local-name: drivebase/hokuyo_node, uri: 'git@github.com:ros-drivers/hokuyo_node.git'}
+- git: {local-name: drivebase/zed_wrapper, uri: 'git@github.com:stereolabs/zed-ros-wrapper.git'}
+- git: {local-name: drivebase/zed_ros_examples, uri: 'git@github.com:stereolabs/zed-ros-examples.git'}
+
+
+- git: {local-name: manipulator/sphere_wrist, uri: 'git@github.com:wvu-robotics/sphere_wrist.git', version: main}
+- git: {local-name: manipulator/scara_arm_ik, uri: 'git@github.com:wvu-robotics/scara_arm_ik.git', version: main}
+- git: {local-name: manipulator/gripper_ee, uri: 'git@github.com:wvu-robotics/gripper_ee.git', version: main}
+- git: {local-name: manipulator/pollination_ee, uri: 'git@github.com:wvu-robotics/pollination_ee.git', version: main}
+- git: {local-name: manipulator/camera_ee, uri: 'git@github.com:wvu-robotics/camera_ee.git', version: main}
+- git: {local-name: manipulator/simple_manipulation_goal, uri: 'git@github.com:wvu-robotics/simple_manipulation_goal.git', version: main}
+- git: {local-name: manipulator/manipulator_teleop, uri: 'git@github.com:wvu-robotics/manipulator_teleop.git', version: main}
+- git: {local-name: manipulator/dynamixel_lib, uri: 'git@github.com:wvu-urc/dynamixel_lib.git', version: trevor_working}
+- git: {local-name: manipulator/stepper_hw_interface, uri: 'git@github.com:wvu-robotics/stepper_hw_interface.git', version: main}
+- git: {local-name: manipulator/flower_manager, uri: 'git@github.com:wvu-robotics/flower_manager.git', version: main}
+
+
+- git: {local-name: stickbug/robot-stickbug, uri: 'git@github.com:wvu-robotics/robot-stickbug.git', version: stickbug}

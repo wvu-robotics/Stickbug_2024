@@ -1,0 +1,62 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find stickbug_control)/config/ros_controllers.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="stickbug"
+    args="joint_state_controller
+          flw_position_controller
+          frw_position_controller
+          bw_position_controller
+          slider_1_position_controller
+          shoulder_1_position_controller
+          elbow_1_position_controller
+          w1_1_position_controller
+          w2_1_position_controller
+          e1_1_position_controller
+          e2_1_position_controller
+          e3_1_position_controller
+          slider_2_position_controller
+          shoulder_2_position_controller
+          elbow_2_position_controller
+          w1_2_position_controller
+          w2_2_position_controller
+          e1_2_position_controller
+          e2_2_position_controller
+          e3_2_position_controller
+          slider_3_position_controller
+          shoulder_3_position_controller
+          elbow_3_position_controller
+          w1_3_position_controller
+          w2_3_position_controller
+          e1_3_position_controller
+          e2_3_position_controller
+          e3_3_position_controller
+          slider_4_position_controller
+          shoulder_4_position_controller
+          elbow_4_position_controller
+          w1_4_position_controller
+          w2_4_position_controller
+          e1_4_position_controller
+          e2_4_position_controller
+          e3_4_position_controller
+          slider_5_position_controller
+          shoulder_5_position_controller
+          elbow_5_position_controller
+          w1_5_position_controller
+          w2_5_position_controller
+          e1_5_position_controller
+          e2_5_position_controller
+          e3_5_position_controller
+          slider_6_position_controller
+          shoulder_6_position_controller
+          elbow_6_position_controller
+          w1_6_position_controller
+          w2_6_position_controller
+          e1_6_position_controller
+          e2_6_position_controller
+          e3_6_position_controller"/>
+
+</launch>

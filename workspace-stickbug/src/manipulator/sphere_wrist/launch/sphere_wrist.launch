@@ -1,0 +1,19 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to launch the wrist orientation inverse kinematics, and 
+  add the num_wrist_joints rosparam to the server
+  
+  launches:
+   1. add num_wrist_joints rosparm
+   2. wrist inverse kinematics
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <rosparam param="num_wrist_joints">2</rosparam>
+
+ <!--###################################### ALGORITHMS #########################################-->
+ 
+  <!--  wrist inverse kinematics --> 
+  <node name="wrist_node" pkg="sphere_wrist" type="sphere_wrist_ik" output="screen"/>
+
+
+</launch>

@@ -1,0 +1,31 @@
+<launch>
+ <!--############################### OVERVIEW ###############################################
+  the purpose of this launch file is to launch all the hardware interfaces for the stickbug
+  manipulator
+  
+  launches:
+   1. dyanmixel interface
+   2. stepper motor interface
+   3. joint_states to motor signal
+   4. end effector camera
+ -->
+ <!--################################ ARGUMENTS ##############################################-->
+    
+ <!--################################ ALGORITHMS #############################################-->
+    
+    <!-- dynamixels___________________________________________________________________________
+    <include file="$(find manipulator_missions)/launch/dynamixel.launch"/>-->
+    
+    <!-- stepper motor _______________________________________________________________________
+    <node pkg="stepper_hw_interface" name="stepper_server_node" type="stepper_server.py" output="screen"/>-->
+    
+    <!-- joint state to motor signals_________________________________________________________-->
+    <node pkg="manipulator_missions" name="joint2signal" type="joint2signal.py" output="screen"/>
+     
+    <!-- camera__________________________________________________________________-->
+    <node pkg="rightarm_moveit_config" name="camera_node" type="camera_node.sh"/>
+    <node pkg="rightarm_moveit_config" name="flowertocamera_publisher" type="flowertocamera_publisher.py"/>
+    <node pkg="rightarm_moveit_config" name="cameratobase_transformer" type="cameratobase_transformer.py"/>
+    
+
+</launch>

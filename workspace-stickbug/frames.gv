@@ -1,0 +1,12 @@
+digraph G {
+"stickbug_base/base_Link" -> "stickbug_base/lidar"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+"stickbug_base/base_footprint" -> "stickbug_base/base_Link"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+"stickbug_base/base_Link" -> "stickbug_base/lift"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+"stickbug_base/lift" -> "stickbug_base/left_d355"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+"stickbug_base/lift" -> "stickbug_base/right_d355"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+"stickbug_base/lift" -> "stickbug_base/zed"[label="Broadcaster: /stickbug_base/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1649094123.310 sec old)\nBuffer length: 0.000 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1649094123.310"[ shape=plaintext ] ;
+ }->"stickbug_base/base_footprint";
+}

@@ -1,0 +1,19 @@
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  manipulator_missions/config/manipulator.yaml
+#
+#
+############################################# SCARA_ARM PARAMETERS ######################################
+
+bicep_length : .5         # length of first link from shaft of shoulder motor to elbow motor in [m]
+forearm_length : .5       # length of second link from shaft of elbow motor to end effector tip in [m]
+is_right_arm : false      # determies to use the left or right arm kinematic solution
+
+collar_bone_x : 0.102       # x position of the collar bone in the base frame [m]
+collar_bone_y : -.0444      # y position of the collar bone in the base frame [m]
+collar_bone_z : 0.05        # z position of the collar bone in the base frame [m]
+collar_bone_yaw : .5236     # yaw of the collar bone in the base frame [rad]
+
+#########################################################################################################
+

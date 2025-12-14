@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="initial_joint_positions" doc="Initial joint configuration of the robot"
+       default=" -J stickbug/arm1/elbow 0 -J stickbug/arm1/shoulder 0 -J stickbug/arm1/slider 0.2 -J stickbug/arm1/w1 0 -J stickbug/arm1/w2 0 -J stickbug/arm2/elbow 0 -J stickbug/arm2/shoulder 0 -J stickbug/arm2/slider 0.11 -J stickbug/arm2/w1 0 -J stickbug/arm2/w2 0 -J stickbug/arm3/elbow 0 -J stickbug/arm3/shoulder 0 -J stickbug/arm3/slider 0.655 -J stickbug/arm3/w1 0 -J stickbug/arm3/w2 0 -J stickbug/arm4/elbow 0 -J stickbug/arm4/shoulder 0 -J stickbug/arm4/slider 0.5083 -J stickbug/arm4/w1 0 -J stickbug/arm4/w2 0 -J stickbug/arm5/elbow 0 -J stickbug/arm5/shoulder 0 -J stickbug/arm5/slider 1.1432 -J stickbug/arm5/w1 0 -J stickbug/arm5/w2 0 -J stickbug/arm6/elbow 0 -J stickbug/arm6/shoulder 0 -J stickbug/arm6/slider 1.2044 -J stickbug/arm6/w1 0 -J stickbug/arm6/w2 0"/>
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="true"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/>
+  </include>
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" textfile="$(find stickbug_moveit_config)/config/gazebo_stickbug.urdf" />
+
+  <!-- unpause only after loading robot model -->
+  <arg name="unpause" value="$(eval '' if arg('paused') else '-unpause')" />
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <arg name="world_pose" value="-x 0 -y 0 -z 0" />
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot $(arg unpause) $(arg world_pose) $(arg initial_joint_positions)"
+    respawn="false" output="screen" />
+
+  <!-- Load joint controller parameters for Gazebo -->
+  <rosparam file="$(find stickbug_moveit_config)/config/gazebo_controllers.yaml" />
+  <!-- Spawn Gazebo ROS controllers -->
+  <node name="gazebo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller" />
+  <!-- Load ROS controllers -->
+  <include file="$(dirname)/ros_controllers.launch"/>
+
+</launch>

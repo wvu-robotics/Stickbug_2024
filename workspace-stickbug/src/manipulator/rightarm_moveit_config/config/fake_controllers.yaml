@@ -1,0 +1,18 @@
+controller_list:
+  - name: fake_right_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - slider
+      - shoulder
+      - elbow
+      - w1
+      - w2
+  - name: fake_right_arm_endeffector_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - e1
+      - e2
+      - e3
+initial:  # Define initial robot poses per group
+  - group: right_arm
+    pose: work

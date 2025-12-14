@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="stickbug_base">
+  <link
+    name="base_footprint">
+    <inertial>
+      <origin
+        xyz="2.14152041306814E-05 3.23189598462186E-05 0.066675"
+        rpy="0 0 0" />
+      <mass
+        value="4.61207520224653" />
+      <inertia
+        ixx="0.0999230513061692"
+        ixy="2.56363639829506E-06"
+        ixz="-1.98809620225214E-19"
+        iyy="0.0999410253939969"
+        iyz="6.92922956199162E-20"
+        izz="0.199833081633109" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/base_footprint.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/base_footprint.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0102079284624479 -3.86323815662623E-05 0.201127610999515"
+        rpy="0 0 0" />
+      <mass
+        value="35.0775372153667" />
+      <inertia
+        ixx="0.845153226678831"
+        ixy="1.15795308289346E-06"
+        ixz="-4.72502983562422E-06"
+        iyy="0.857016820744041"
+        iyz="-1.46341439248048E-08"
+        izz="0.4330698567729" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.109803921568627 0.109803921568627 0.109803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot2base"
+    type="fixed">
+    <origin
+      xyz="2.1415E-05 3.2319E-05 0.0635"
+      rpy="0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="fr_wheel">
+    <inertial>
+      <origin
+        xyz="4.82958464445016E-05 -7.32604728410462E-05 -0.0158742308710669"
+        rpy="0 0 0" />
+      <mass
+        value="0.626653098801925" />
+      <inertia
+        ixx="0.00071178175395083"
+        ixy="2.7414822166393E-09"
+        ixz="-5.77419111548287E-08"
+        iyy="0.000711774501854219"
+        iyz="7.87863202048541E-08"
+        izz="0.00139769373829352" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/fr_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/fr_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="frw"
+    type="continuous">
+    <origin
+      xyz="0.16059 -0.27821 0.0381"
+      rpy="1.5708 0 0.5236" />
+    <parent
+      link="base_link" />
+    <child
+      link="fr_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="0" />
+    <dynamics
+      damping="0.2"
+      friction="0.2" />
+  </joint>
+  <link
+    name="fl_wheel">
+    <inertial>
+      <origin
+        xyz="-7.20537664984366E-05 -6.99681935735462E-05 -0.0152708692239969"
+        rpy="0 0 0" />
+      <mass
+        value="0.559485027704479" />
+      <inertia
+        ixx="0.000579784098176026"
+        ixy="-1.88505640148465E-09"
+        ixz="6.17916644106062E-08"
+        iyy="0.000579785178714697"
+        iyz="7.56495525234232E-08"
+        izz="0.0011338073867259" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/fl_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/fl_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="flw"
+    type="continuous">
+    <origin
+      xyz="0.16059 0.27815 0.0381"
+      rpy="1.5708 0 2.618" />
+    <parent
+      link="base_link" />
+    <child
+      link="fl_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="0" />
+    <dynamics
+      damping="0.2"
+      friction="0.2" />
+  </joint>
+  <link
+    name="b_wheel">
+    <inertial>
+      <origin
+        xyz="8.36992519676054E-05 -2.63433393755813E-05 -0.0158742295235679"
+        rpy="0 0 0" />
+      <mass
+        value="0.626653031138758" />
+      <inertia
+        ixx="0.00071177618338088"
+        ixy="4.1083335760656E-09"
+        ixz="-9.45107850065779E-08"
+        iyy="0.000711780076798303"
+        iyz="2.46679649776571E-08"
+        izz="0.00139769373928287" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/b_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/b_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bw"
+    type="continuous">
+    <origin
+      xyz="-0.32124 -3.2319E-05 0.0381"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="b_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="0" />
+    <dynamics
+      damping="0.2"
+      friction="0.2" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="-9.78202271295636E-05 -2.43039787231798E-06 0.0058316040170599"
+        rpy="0 0 0" />
+      <mass
+        value="0.6957286087788" />
+      <inertia
+        ixx="0.000878507722123655"
+        ixy="8.3578146326656E-11"
+        ixz="8.3324695920418E-08"
+        iyy="0.000878975923859681"
+        iyz="-6.86791280845821E-08"
+        izz="0.000889858414455019" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base2lidar"
+    type="fixed">
+    <origin
+      xyz="0.21804 -3.2319E-05 0.32913"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="zed">
+    <inertial>
+      <origin
+        xyz="-0.0194322614660269 9.12426059709588E-07 -0.000862607518043401"
+        rpy="0 0 0" />
+      <mass
+        value="0.167694642835054" />
+      <inertia
+        ixx="0.000382844282483195"
+        ixy="3.2315292808456E-09"
+        ixz="-3.326725690359E-07"
+        iyy="3.24806894733853E-05"
+        iyz="1.49948250317334E-09"
+        izz="0.000390509177129988" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/zed.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/zed.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base2zed"
+    type="fixed">
+    <origin
+      xyz="0.30283 -3.2319E-05 0.23593"
+      rpy="0 0.034907 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="zed" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="d355">
+    <inertial>
+      <origin
+        xyz="-0.00788625798889209 -0.000593104662498781 9.05379812177198E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.061436017794559" />
+      <inertia
+        ixx="5.89869602274054E-05"
+        ixy="-1.96801347845483E-08"
+        ixz="-2.7110431537758E-08"
+        iyy="4.49845717604606E-06"
+        iyz="1.96478787836703E-08"
+        izz="5.57860158775296E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/d355.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/d355.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base2d355"
+    type="fixed">
+    <origin
+      xyz="-0.0035667 -3.2319E-05 1.8093"
+      rpy="0 3.1416 -1.5708" /> <!-- 3.1416 1.5708 0-->
+    <parent
+      link="base_link" />
+    <child
+      link="d355" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="l_lift">
+    <inertial>
+      <origin
+        xyz="0.000290120193721988 -3.98269065002427E-05 -0.0130757720478314"
+        rpy="0 0 0" />
+      <mass
+        value="0.0129866178194594" />
+      <inertia
+        ixx="1.43164773219033E-06"
+        ixy="2.3850396902316E-09"
+        ixz="-1.65543141791114E-08"
+        iyy="1.44873230959085E-06"
+        iyz="2.27143690223563E-09"
+        izz="2.11753052630025E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/l_lift.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/l_lift.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base2l_lift"
+    type="fixed">
+    <origin
+      xyz="0.12397 0.094788 0.32988"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="l_lift" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="r_lift">
+    <inertial>
+      <origin
+        xyz="0.00029284109815797 -2.274392613133E-08 -0.013075772047841"
+        rpy="0 0 0" />
+      <mass
+        value="0.0129866178194594" />
+      <inertia
+        ixx="1.43132102452946E-06"
+        ixy="-3.75614859620096E-12"
+        ixz="-1.67094208007256E-08"
+        iyy="1.44905901725174E-06"
+        iyz="2.13866775789404E-13"
+        izz="2.11753052630024E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/r_lift.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://stickbug_base/meshes/r_lift.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base2r_lift"
+    type="fixed">
+    <origin
+      xyz="0.12379 -0.095217 0.32988"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="r_lift" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

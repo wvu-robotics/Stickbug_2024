@@ -1,0 +1,18 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to houses the scara_arm inverse kinematics node and add,
+  the num_arm_joints rosparam to the server
+  
+  launches:
+   1. rosparam num_arm_joints
+   2. arm inverse kinematics
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <rosparam param="num_arm_joints">3</rosparam>
+  
+ <!--###################################### ALGORITHMS #########################################-->
+    
+   <!-- arm inverse kinematics -->
+   <node name="arm_node" pkg="scara_arm_ik" type="scara_position_ik" output="screen"/>
+
+</launch>

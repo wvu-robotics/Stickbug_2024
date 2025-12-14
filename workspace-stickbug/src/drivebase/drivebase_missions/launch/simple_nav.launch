@@ -1,0 +1,37 @@
+<launch>
+ <!--############################### OVERVIEW ##################################
+   the purpose of this launch file is to be used as a high-level file for 
+   basic autonomous driving, uses simple PID control to move to a waypoint
+   
+   launches:
+    1. simple odometry (publish /odom to tf frame)
+    2. simple waypoint (pid control to next waypoint)
+    3. low-level algorithms
+    4. conditional hardware or simulation
+ -->
+ <!--############################## ARGUMENTS ######################################-->
+   <arg name="robot_namespace" default="drivebase"/>
+   <arg name="use_hardware"    default="false"/>
+
+   <group ns="$(arg robot_namespace)">
+      <rosparam command="load" file="$(find drivebase_missions)/config/drivebase.yaml" subst_value="true"/>
+    </group>
+ <!-- ############################# ALGORITHMS #######################################-->
+   <group ns="$(arg robot_namespace)">
+      <!-- create odom tf frame -->
+      <node pkg="simple_odom" name="simple_odom" type="simple_odom"/>
+
+      <!-- simple direct waypoint nav -->
+      <node pkg="simple_waypoint_nav" name="pid_navigation" type="simple_waypoint"/>
+
+      <!-- low level algorithms-->
+      <include file="$(find drivebase_missions)/launch/kinematics_and_perception.launch"/>
+
+      <!-- hardware vs. simulation-->
+      <group if="$(eval use_hardware == true)">
+         <include file="$(find drivebase_missions)/launch/drive_hardware.launch"/>
+      </group>
+
+   </group>
+
+</launch>

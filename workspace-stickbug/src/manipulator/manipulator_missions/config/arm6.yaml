@@ -1,0 +1,12 @@
+u2d2 : /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3WI4C5-if00-port0    
+is_right_arm : True          
+is_poll_end : True
+stepper_position : 106250
+home_position:
+  - 0.3
+  - -0.25
+  - 1.1  # z
+  - 0.0  # rx
+  - 0.0  # ry
+  - 0.7071  # rz
+  - 0.7071  # rw

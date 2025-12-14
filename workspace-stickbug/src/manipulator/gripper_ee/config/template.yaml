@@ -1,0 +1,16 @@
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  manipulator_missions/config/manipulator.yaml
+#
+#
+############################################# GRIPPER_EE PARAMETERS ######################################
+
+actuation_x : .096        # the dx position from the end effector base to the desired actuation location on the gripper [m]
+actuation_y : 0          # the dy position from the end effector base to the desired actuation location on the gripper [m]
+actuation_z : 0          # the dz position from the end effector base to the desired actuation location on the gripper [m]
+
+open_angle : 0.7854      # the angle considered open for the gripper [rad]
+close_angle : 0.0        # the angle considered closed for the gripper [rad]
+
+##########################################################################################################

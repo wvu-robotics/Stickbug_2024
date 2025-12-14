@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="stickbug">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="right_arm_1">
+        <joint name="stickbug/arm2/slider"/>
+        <joint name="stickbug/arm2/shoulder"/>
+        <joint name="stickbug/arm2/elbow"/>
+        <joint name="stickbug/arm2/w1"/>
+        <joint name="stickbug/arm2/w2"/>
+    </group>
+    <group name="right_arm_2">
+        <joint name="stickbug/arm4/slider"/>
+        <joint name="stickbug/arm4/shoulder"/>
+        <joint name="stickbug/arm4/elbow"/>
+        <joint name="stickbug/arm4/w1"/>
+        <joint name="stickbug/arm4/w2"/>
+    </group>
+    <group name="right_arm_3">
+        <joint name="stickbug/arm6/slider"/>
+        <joint name="stickbug/arm6/shoulder"/>
+        <joint name="stickbug/arm6/elbow"/>
+        <joint name="stickbug/arm6/w1"/>
+        <joint name="stickbug/arm6/w2"/>
+    </group>
+    <group name="left_arm_1">
+        <joint name="stickbug/arm1/slider"/>
+        <joint name="stickbug/arm1/shoulder"/>
+        <joint name="stickbug/arm1/elbow"/>
+        <joint name="stickbug/arm1/w1"/>
+        <joint name="stickbug/arm1/w2"/>
+    </group>
+    <group name="left_am_2">
+        <joint name="stickbug/arm3/shoulder"/>
+        <joint name="stickbug/arm3/elbow"/>
+        <joint name="stickbug/arm3/w1"/>
+        <joint name="stickbug/arm3/w2"/>
+        <joint name="stickbug/arm3/slider"/>
+    </group>
+    <group name="left_arm_3">
+        <joint name="stickbug/arm5/slider"/>
+        <joint name="stickbug/arm5/shoulder"/>
+        <joint name="stickbug/arm5/elbow"/>
+        <joint name="stickbug/arm5/w1"/>
+        <joint name="stickbug/arm5/w2"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="right_arm_3_home" group="right_arm_3">
+        <joint name="stickbug/arm6/elbow" value="0"/>
+        <joint name="stickbug/arm6/shoulder" value="0"/>
+        <joint name="stickbug/arm6/slider" value="1.2044"/>
+        <joint name="stickbug/arm6/w1" value="0"/>
+        <joint name="stickbug/arm6/w2" value="0"/>
+    </group_state>
+    <group_state name="right_arm_2_home" group="right_arm_2">
+        <joint name="stickbug/arm4/elbow" value="0"/>
+        <joint name="stickbug/arm4/shoulder" value="0"/>
+        <joint name="stickbug/arm4/slider" value="0.5083"/>
+        <joint name="stickbug/arm4/w1" value="0"/>
+        <joint name="stickbug/arm4/w2" value="0"/>
+    </group_state>
+    <group_state name="right_arm_1_home" group="right_arm_1">
+        <joint name="stickbug/arm2/elbow" value="0"/>
+        <joint name="stickbug/arm2/shoulder" value="0"/>
+        <joint name="stickbug/arm2/slider" value="0.11"/>
+        <joint name="stickbug/arm2/w1" value="0"/>
+        <joint name="stickbug/arm2/w2" value="0"/>
+    </group_state>
+    <group_state name="left_arm_1_home" group="left_arm_1">
+        <joint name="stickbug/arm1/elbow" value="0"/>
+        <joint name="stickbug/arm1/shoulder" value="0"/>
+        <joint name="stickbug/arm1/slider" value="0.2"/>
+        <joint name="stickbug/arm1/w1" value="0"/>
+        <joint name="stickbug/arm1/w2" value="0"/>
+    </group_state>
+    <group_state name="left_arm_2_home" group="left_am_2">
+        <joint name="stickbug/arm3/elbow" value="0"/>
+        <joint name="stickbug/arm3/shoulder" value="0"/>
+        <joint name="stickbug/arm3/slider" value="0.655"/>
+        <joint name="stickbug/arm3/w1" value="0"/>
+        <joint name="stickbug/arm3/w2" value="0"/>
+    </group_state>
+    <group_state name="left_arm_3_home" group="left_arm_3">
+        <joint name="stickbug/arm5/elbow" value="0"/>
+        <joint name="stickbug/arm5/shoulder" value="0"/>
+        <joint name="stickbug/arm5/slider" value="1.1432"/>
+        <joint name="stickbug/arm5/w1" value="0"/>
+        <joint name="stickbug/arm5/w2" value="0"/>
+    </group_state>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="virtual_joint" type="fixed" parent_frame="world" child_link="stickbug/drivebase/base_footprint"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm1/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm1/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm1/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm2/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm4/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm2/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm2/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm4/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm4/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm6/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/base_link" reason="Always"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/l_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm2/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm3/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm3/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm5/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/arm5/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm1/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm1/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm2/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm2/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm2/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm3/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm4/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm5/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm1/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm1/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm2/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm2/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm1/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm1/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm2/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm1/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm1/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm2/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm2/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm2/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm3/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm3/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm4/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm4/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/arm1/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/arm1/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/arm3/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/arm3/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/arm5/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/arm5/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm1/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm2/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm2/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm2/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm3/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm4/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm4/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm4/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm5/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm6/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm3/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm3/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm4/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm4/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm5/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm5/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm6/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/r_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm4/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm4/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm6/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm2/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm2/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm4/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm4/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm6/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm6/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm2/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm2/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm3/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm3/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm4/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm4/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm6/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm2/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm2/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm3/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm4/e3_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/arm6/e3_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm2/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm2/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm3/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm4/end_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/arm6/end_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm2/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm4/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm4/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm4/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/arm6/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/arm2/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/arm4/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/arm4/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/arm6/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm4/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm4/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm4/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm6/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm6/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm2/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/arm3/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/arm3/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/arm3/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/arm4/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/arm4/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/arm4/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/arm6/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/base_link" reason="Always"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/l_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm5/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/arm6/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm3/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm3/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm5/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm3/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm3/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm4/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm5/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm5/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm3/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm3/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm4/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm3/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm3/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm6/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/arm3/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/arm3/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/arm5/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/arm5/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/arm5/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm3/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm4/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm4/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm5/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm6/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/arm5/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/arm5/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/arm6/box" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/r_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm6/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm4/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm6/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm6/e1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm4/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm4/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm6/e3_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm4/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm4/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm5/cam_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm6/end_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/arm4/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/arm6/bicep" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/arm6/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/arm4/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/arm6/forearm" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/arm6/w1_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/arm6/cam_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/arm6/e2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/arm6/w2_link" reason="Default"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm4/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/arm5/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/arm5/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/arm6/bicep" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/arm6/box" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/base_link" reason="Always"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/l_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/arm5/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/arm5/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/arm5/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/arm5/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/arm5/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/arm5/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/arm5/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/arm5/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/arm5/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/arm5/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm5/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/arm6/box" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/arm6/forearm" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/base_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/bicep" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/r_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/box" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/e1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/e2_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/e3_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/end_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/cam_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/e3_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/arm6/forearm" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/arm6/w1_link" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/end_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/arm6/w1_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/forearm" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/arm6/w2_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w1_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/b_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/arm6/w2_link" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/base_footprint" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/base_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/b_wheel" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/base_link" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/d355" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_footprint" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/d355" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/fl_wheel" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/fr_wheel" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/l_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/lidar" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/r_lift" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/base_link" link2="stickbug/drivebase/zed" reason="Adjacent"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/fl_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/d355" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fl_wheel" link2="stickbug/drivebase/fr_wheel" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fl_wheel" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fl_wheel" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fl_wheel" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fl_wheel" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fr_wheel" link2="stickbug/drivebase/l_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fr_wheel" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fr_wheel" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/fr_wheel" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/l_lift" link2="stickbug/drivebase/lidar" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/l_lift" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/l_lift" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/lidar" link2="stickbug/drivebase/r_lift" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/lidar" link2="stickbug/drivebase/zed" reason="Never"/>
+    <disable_collisions link1="stickbug/drivebase/r_lift" link2="stickbug/drivebase/zed" reason="Never"/>
+</robot>

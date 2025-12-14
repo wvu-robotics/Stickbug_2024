@@ -1,0 +1,25 @@
+<robot name="poll_arm_right" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Define a property for the namespace -->
+<xacro:property name="ns" default="stickbug/arm2"/>
+
+<!-- links and joints include files-->
+<xacro:include filename="$(find poll_arm_right)/urdf/poll_arm_right.urdf.xacro" />
+
+<!-- gazebo plugins include files-->
+<xacro:include filename="$(find poll_arm_right)/urdf/poll_arm_right.gazebo.xacro" />
+
+<link name="${ns}/base">
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value=".0001"/>
+        <inertia
+            ixx="0.0001" ixy="0.0001" ixz="0.0001"
+            iyy="0.0001" iyz="0.0001"
+            izz="0.0001"/>
+    </inertial>
+</link>
+
+<xacro:poll_arm_right parent_link="${ns}/base" ns="${ns}" />
+</robot>
+

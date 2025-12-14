@@ -1,0 +1,51 @@
+<launch>
+
+<!--####################################### OVERVIEW ################################################
+ the purpose of this launch file is to serve as a helper file to manage / launch the realsense
+ hardware configuration for the stickbug robot
+
+ launches:
+  1. right realsense hardware interface
+  2. left realsense hardware interface
+-->
+<!--####################################### ARGUMENTS ################################################-->
+  <arg name="robot_namespace"           default="drivebase"/>
+
+  <!-- realsense arguments__________________________________________-->
+  <arg name="serial_no_camera1"    			default="138322251421"/> 			<!-- Note: Replace with actual serial number -->
+  <arg name="serial_no_camera2"    			default="138322252895"/> 			<!-- Note: Replace with actual serial number -->
+  <arg name="camera1"              			default="camera1"/>		<!-- Note: Replace with camera name -->
+  <arg name="camera2"              			default="camera2"/>		<!-- Note: Replace with camera name -->
+
+  <arg name="tf_prefix_camera1"         default="$(arg camera1)"/>
+  <arg name="tf_prefix_camera2"         default="$(arg camera2)"/>
+  <arg name="initial_reset"             default="false"/>
+  <arg name="reconnect_timeout"         default="6.0"/>
+  <arg name="pointcloud"                default="true"/>
+
+<!--###################################### ALGORITHMS ################################################-->
+
+ <!-- right realsense__________________________________________________________________________ -->
+  <group ns="$(arg camera1)">
+    <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+      <arg name="serial_no"             value="$(arg serial_no_camera1)"/>
+      <arg name="tf_prefix"         		value="$(arg robot_namespace)/$(arg tf_prefix_camera1)"/>
+      <arg name="initial_reset"         value="$(arg initial_reset)"/>
+      <arg name="reconnect_timeout"     value="$(arg reconnect_timeout)"/>
+      <arg name="enable_pointcloud"     value="$(arg pointcloud)"/>
+
+    </include>
+  </group>
+
+ <!-- left realsense___________________________________________________________________________-->
+  <group ns="$(arg camera2)">
+    <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+      <arg name="serial_no"             value="$(arg serial_no_camera2)"/>
+      <arg name="tf_prefix"		          value="$(arg robot_namespace)/$(arg tf_prefix_camera2)"/>
+      <arg name="initial_reset"         value="$(arg initial_reset)"/>
+      <arg name="reconnect_timeout"     value="$(arg reconnect_timeout)"/>
+      <arg name="enable_pointcloud"     value="$(arg pointcloud)"/>
+    </include>
+  </group>
+
+</launch>

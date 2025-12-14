@@ -1,0 +1,16 @@
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  manipulator_missions/config/manipulator.yaml
+#
+#
+######################################### STEPPER MOTOR PARAMETERS ######################################
+
+DIR : 15      #  GPIO pin 15 on pi is direction
+STEP : 14     #  GPIO pin 14 on pi is the step pulse
+
+CCW : True    # set counter clockwise pin value for pi
+CW : False    # set clockwise pin value for pi
+
+delay : .001  # time delay between steps [sec]
+#########################################################################################################

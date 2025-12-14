@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: poll_arm_right
+    relative_path: urdf/poll_arm_right.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/poll_arm_right.srdf
+  CONFIG:
+    author_name: madhav rijal
+    author_email: rijalmadhav12@gmail.com
+    generated_timestamp: 1705701262

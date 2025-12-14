@@ -1,0 +1,19 @@
+
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  drivebase_missions/config/drivebase.yaml
+#
+#
+############################################# KIWI DRIVE KINEMATICS PARAMETERS ############################################
+max_speed : 6         # maximum angular speed of the robot's motors [rad/s]
+wheel_radius : .10    # wheel radius in [m]
+min_signal : -1000    # lowest signal value accepted by motor controller (full reverse)
+max_signal : 1000     # highest signal value accepted by motor controller (full forward)
+
+robot_radius : .31                   # radius from geometric centroid of robot to center of wheel [m]
+beta : 1.04719666                    # angle offset between the x axis and motors 2 and 3 [rad]
+gear_ratio : 1                       # gear ratio of the motor
+encoder_counts_per_revolution : 500  # how many counts the encoder makes to make one full wheel rotation
+
+############################################################################################################################

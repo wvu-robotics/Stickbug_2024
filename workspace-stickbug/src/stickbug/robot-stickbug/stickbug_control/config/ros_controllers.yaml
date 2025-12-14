@@ -1,0 +1,217 @@
+stickbug:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+  flw_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/drivebase/flw
+    pid: {p: 10.0, i: 0.00, d: 00.0}
+  frw_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/drivebase/frw
+    pid: {p: 10.0, i: 0.00, d: 00.0}
+  bw_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/drivebase/bw
+    pid: {p: 10.0, i: 0.00, d: 00.0}
+
+  slider_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/elbow
+    pid: {p: 10.0, i: 0.0, d: 0.0}
+  w1_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm1/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+
+  slider_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/elbow
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+  w1_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm2/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+
+  slider_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/elbow
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+  w1_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm3/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+
+  slider_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/elbow
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+  w1_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm4/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+
+  slider_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/elbow
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+  w1_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm5/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+
+  slider_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/slider
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  shoulder_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/shoulder
+    pid: {p: 10.0, i: 0.01, d: 1.0}
+  elbow_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/elbow
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+  w1_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/w1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  w2_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/w2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e1_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/e1
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e2_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/e2
+    pid: {p: 2.0, i: 0.01, d: 0.001}
+  e3_6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: stickbug/arm6/e3
+    pid: {p: 2.0, i: 0.01, d: 0.001}

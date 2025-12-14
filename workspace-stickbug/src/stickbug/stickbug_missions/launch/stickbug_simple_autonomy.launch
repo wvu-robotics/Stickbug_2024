@@ -1,0 +1,94 @@
+<launch>
+<!--############################################ OVERVIEW ##########################################
+ The purpose of this launch file is to serve as the top-most level for basic autonomy of Stickbug robot
+
+ launches:
+  1. robot model to parameter sever
+  2. rviz 
+  3. simple drivebase autonomy
+  4. Hardware vs. Simulation
+    4.1 Hardware:    a joint state publisher with all 39 of stickbug's joints
+    4.2 Simulation:  launches gazebo and spawns robot with 3 arms
+
+-->
+<!--############################################ ARGUMENTS ##########################################-->
+  <arg name="robot_namespace" default="stickbug"/>
+  <arg name="use_hardware" default="false"/>
+
+<!--############################################ ALGORITHMS #########################################-->
+    
+  <!-- robot model ______________________________________________________-->
+  <include file="$(find stickbug_missions)/launch/stickbug_model.launch">
+    <arg name="robot_namespace" value="$(arg robot_namespace)"/>
+  </include>
+
+  <!-- rviz _____________________________________________________________-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find drivebase_missions)/rviz/stickbug_drivebase_rviz.rviz"/>
+
+  <!-- drivebase autonomy launch_________________________________________-->
+  <include file="$(find drivebase_missions)/launch/simple_nav.launch">
+    <arg name="robot_namespace" value="$(arg robot_namespace)/drivebase"/>
+    <arg name="use_hardware" value="$(arg use_hardware)"/>
+  </include>
+
+  <!-- hardware vs. simulation =====================================================================-->
+  <group if="$(eval use_hardware == true)">
+      <!-- stickbug all joints publisher 
+      <node name="stickbug_joint_pub" pkg="stickbug_missions" type="stickbug_joint_pub" 
+        output="screen" ns ="$(arg robot_namespace)"/>-->
+  </group>
+  <group if="$(eval use_hardware == false)">
+   
+    <!-- launch gazebo 
+    <include file="$(find stickbug)/launch/gazebo_robot.launch">
+      <arg name="robot_namespace" value="$(arg robot_namespace)"/>
+    </include>-->
+
+    <!-- manipulator 1 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="1"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+     <!-- manipulator 2 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="2"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+     <!-- manipulator 3 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="3"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+
+    <!-- manipulator 4 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="4"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+     <!-- manipulator 5 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="5"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+     <!-- manipulator 6 autonomy launch_________________________________________-->
+    <include file="$(find manipulator_missions)/launch/simple_manip_goal.launch">
+      <arg name="arm_number"      value="6"/>
+      <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      <arg name="solo"            value="false"/>
+    </include>
+
+    <!--<node name="stickbug_joint2gazebo" pkg="stickbug_missions"  type="stickbug_joint2gazebo" 
+          output="screen" ns="$(arg robot_namespace)"/> -->
+          <!-- stickbug all joints publisher -->
+      <node name="stickbug_joint_pub" pkg="stickbug_missions" type="stickbug_joint_pub" 
+        output="screen" ns ="$(arg robot_namespace)"/>
+
+  </group>
+  <!--============================================================================================-->
+
+</launch>

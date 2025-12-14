@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: stickbug
+    relative_path: urdf/stickbug.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/stickbug.srdf
+  CONFIG:
+    author_name: madhav rijal
+    author_email: mr00059@mix.wvu.edu
+    generated_timestamp: 1707264555

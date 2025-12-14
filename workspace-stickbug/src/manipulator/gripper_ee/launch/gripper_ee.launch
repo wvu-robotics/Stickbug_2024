@@ -1,0 +1,17 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to launch the gripper end effector node, and 
+  num_ee_joints rosparam
+  
+  launches:
+   1. rosparam num_ee_joints
+   2. ee_gripper node
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <rosparam param="num_ee_joints">1</rosparam>
+ <!--###################################### ALGORITHMS #########################################-->
+ 
+    <!-- end effector kinematics -->
+    <node name="ee_node" pkg="gripper_ee" type="gripper_ee" output="screen"/>
+
+</launch>

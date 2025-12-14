@@ -1,0 +1,11 @@
+
+<launch>
+  <!-- Set the robot_description parameter with the URDF content -->
+  <param name="robot_description" textfile="/home/air//moveit_ws/src/poll_arm_right/urdf/poll_arm_right.urdf"  />
+
+  <!-- Start robot_state_publisher with publish_frames parameter -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frames" value="true"/>
+     <param name="use_tf_static" value="false"/> 
+  </node>
+</launch>

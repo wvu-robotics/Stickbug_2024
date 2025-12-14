@@ -1,0 +1,92 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to be a high-level "go-to-pose" mission using direct
+  position kinematics 
+  
+  launches:
+    1. manipulator position kinematics
+    2. hardware vs. simulation
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <arg name="use_hardware"    default="true"/>
+  <arg name="solo"            default="false"/>
+  <arg name="arm_number"      default="1"/>
+  <arg name="auto"            default="false"/>
+  
+  
+<!--###################################### ALGORITHMS #########################################-->
+
+  <!-- load arm 1 specific params if arm 1____________________________________________________________-->
+  <group if="$(eval arm_number == 1)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="false"/>
+          <arg name="robot_namespace" value="stickbug/arm1"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame" value="$(eval 'stickbug/arm1/base' if solo else 'stickbug/drivebase/l_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+  <!-- load arm 2 specific params if arm 2____________________________________________________________-->
+  <group if="$(eval arm_number == 2)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="true"/>
+          <arg name="robot_namespace" value="stickbug/arm2"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame"    value="$(eval 'stickbug/arm2/base' if solo else 'stickbug/drivebase/r_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+  <!-- load arm 3 specific params if arm 3____________________________________________________________-->
+  <group if="$(eval arm_number == 3)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="false"/>
+          <arg name="robot_namespace" value="stickbug/arm3"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame" value="$(eval 'stickbug/arm1/base' if solo else 'stickbug/drivebase/l_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+  <!-- load arm 4 specific params if arm 4____________________________________________________________-->
+  <group if="$(eval arm_number == 4)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="true"/>
+          <arg name="robot_namespace" value="stickbug/arm4"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame" value="$(eval 'stickbug/arm2/base' if solo else 'stickbug/drivebase/r_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+  <!-- load arm 5 specific params if arm 5____________________________________________________________-->
+  <group if="$(eval arm_number == 5)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="false"/>
+          <arg name="robot_namespace" value="stickbug/arm5"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame" value="$(eval 'stickbug/arm1/base' if solo else 'stickbug/drivebase/l_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+  <!-- load arm 6 specific params if arm 6____________________________________________________________-->
+  <group if="$(eval arm_number == 6)">
+      <include file="$(find manipulator_missions)/launch/generic_arm.launch">
+          <arg name="is_right_arm"    value="true"/>
+          <arg name="robot_namespace" value="stickbug/arm6"/>
+          <arg name="solo"            value="$(arg solo)"/>
+          <arg name="auto"            value="$(arg auto)"/>
+          <arg name="common_frame" value="$(eval 'stickbug/arm2/base' if solo else 'stickbug/drivebase/r_lift')"/>
+          <arg name="use_hardware"    value="$(arg use_hardware)"/>
+      </include>
+  </group>
+
+
+</launch>

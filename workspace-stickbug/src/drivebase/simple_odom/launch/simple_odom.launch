@@ -1,0 +1,13 @@
+<launch>
+	
+  <!-- sets the transform between the odometry frame and base robot frame-->
+	<node name="odom_to_foot" pkg="simple_odom" type="odom_frame" output="screen">
+		<param name="head" value="/odom"/>
+		<param name="child" value="/base_footprint"/>
+		<param name="topic" value="odom"/>
+	</node>
+	
+ <!--  integrates the cmd_velocity topic to an odometry topic--> 
+    <node name="cmd_vel_to_odom" pkg="simple_odom" type="simple_odom" output="screen"/>
+
+</launch>

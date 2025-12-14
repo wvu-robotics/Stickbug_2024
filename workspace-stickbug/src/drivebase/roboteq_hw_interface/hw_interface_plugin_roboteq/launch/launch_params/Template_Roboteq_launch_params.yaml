@@ -1,0 +1,21 @@
+plugin_names:
+    {
+        brushed : hw_interface_plugin_roboteq
+    }
+
+brushed:
+    {
+        Controller_Name : Controller_Name,
+    }
+
+Controller_Name:
+    {
+        deviceName         : "/dev/ttyUSB0",
+        baudrate           : 115200,
+        subscribeToTopic   : "/roboteq/command/controller_name",
+        publishToTopic     : "/roboteq/feedback/controller_name",
+        controllerType     : "Two_Channel",
+        initializationCmd  : "encoder_counter_absolute feedback motor_amps battery_amps",
+        initCmdCycle       : 20,
+        wheelType          : "",
+    }

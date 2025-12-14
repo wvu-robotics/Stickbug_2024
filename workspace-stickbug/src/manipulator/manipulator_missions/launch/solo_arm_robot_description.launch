@@ -1,0 +1,27 @@
+<launch>
+  <arg name="is_right_arm" default="false"/>
+  <arg name="use_hardware"    default="true"/>
+  <arg name="robot_namespace" default="stickbug/arm1"/>
+  
+  <group if="$(eval is_right_arm == false)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find poll_arm_left)/urdf/poll_arm_left_solo.urdf.xacro'"/>
+  </group>
+
+  <group if="$(eval is_right_arm == true)">
+    <param name="robot_description"
+        command="$(find xacro)/xacro --inorder '$(find poll_arm_right)/urdf/poll_arm_right_solo.urdf.xacro'"/>
+  </group>
+
+  <group if="$(eval use_hardware == false)">
+        <remap from="joint_states" to="manipulator_goal_joints" />
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
+  <group if="$(eval use_hardware == true)">
+        <remap from="joint_states" to="manipulator_actual_joints" />
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
+
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find manipulator_missions)/rviz/solo_arm.rviz" />
+</launch>

@@ -1,0 +1,55 @@
+<launch>
+ <!--################################ OVERVIEW #############################
+    the purpose of this launch is to be the high level launch file for 
+    teleop control stickbug's drivetrain
+
+    launches:
+      1. joy
+      2. holonomic teleop 
+      3. low level algorithms
+      4. hardware vs. simulations  
+ -->
+ <!--################################ ARGUMENTS ###################################-->
+    <arg name="robot_namespace" default="drivebase"/>
+    <arg name="use_hardware" default="true"/>
+
+  <!-- Launch LIDAR-->
+  <include file="$(find velodyne_pointcloud)/launch/VLP-32C_points.launch"/>
+
+  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find drivebase_missions)/config/mux_cmd.yaml" />
+    <remap from="cmd_vel_out" to="/stickbug/drivebase/cmd_vel"/>
+  </node>
+
+
+
+    <group ns="$(arg robot_namespace)">
+      <rosparam command="load" file="$(find drivebase_missions)/config/drivebase.yaml" subst_value="true"/>
+
+      <!-- teleop node_____________________________________________________________-->
+      <remap from="cmd_vel" to="joy/cmd_vel"/>
+      <include file="/opt/ros/noetic/share/teleop_twist_joy/launch/teleop.launch"> 
+        <arg name="joy_config" value="ps3-holonomic"/>
+      </include>
+
+    </group>
+ <!--################################ ALGORITHMS ##################################-->
+    <group ns="$(arg robot_namespace)">
+      <!-- joy node _______________________________________________________________-->
+      <node respawn="true" pkg="joy" type="joy_node" name="joy" >
+        <param name="dev" type="string" value="/dev/input/js0" />
+        <param name="deadzone" value="0.12" />
+      </node>
+
+
+      <!-- low level algorithms_____________________________________________________-->
+      <include file="$(find drivebase_missions)/launch/kinematics_and_perception.launch"/>
+
+      <!-- hardware vs. simulation__________________________________________________-->
+      <group if="$(eval use_hardware == true)">
+         <include file="$(find drivebase_missions)/launch/drive_hardware.launch"/>
+      </group>
+	
+    </group>
+
+</launch>

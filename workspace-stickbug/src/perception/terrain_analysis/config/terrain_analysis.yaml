@@ -1,0 +1,5 @@
+
+terrain_frame_id : "drivebase/base_footprint"
+sub_LaserCloud : "/registered_scan"
+sub_Odometry : "/state_estimation"
+

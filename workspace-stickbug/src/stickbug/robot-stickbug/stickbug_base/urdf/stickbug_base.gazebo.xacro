@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="stickbug_base_gazebo" params="ns">
+
+    <!-- ================================= motor joint controllers ==========================-->
+    <transmission name="${ns}/trans_frw">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${ns}/frw">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${ns}/frw_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="${ns}/trans_flw">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${ns}/flw">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${ns}/flw_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="${ns}/trans_bw">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${ns}/bw">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${ns}/bw_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!--=============================== holonomic drivetrain plugin ==========================-->
+    <gazebo>
+    <plugin name="${ns}/object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>stickbug/drivebase/cmd_vel</commandTopic>
+      <odometryTopic>stickbug/drivebase/odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>${ns}/base_footprint</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+  <!--================================ realsense plugin ================================-->
+    
+    <gazebo reference="${ns}/d355">
+        <sensor name="${ns}/d355_camera" type="depth">
+            
+            <update_rate>20</update_rate>
+            <camera>
+            <horizontal_fov>1.047198</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>R8G8B8</format>
+            </image>
+            <clip>
+                <near>0.05</near>
+                <far>3</far>
+            </clip>
+            </camera>
+            <plugin name="${ns}/d355_controller" filename="libgazebo_ros_openni_kinect.so">
+            <baseline>0.2</baseline>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>1.0</updateRate>
+            <cameraName>${ns}/d355</cameraName>
+            <imageTopicName>color/image_raw</imageTopicName>
+            <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <frameName>${ns}/camera_frame</frameName>
+            <pointCloudCutoff>0.5</pointCloudCutoff>
+            <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+            <distortionK1>0.00000001</distortionK1>
+            <distortionK2>0.00000001</distortionK2>
+            <distortionK3>0.00000001</distortionK3>
+            <distortionT1>0.00000001</distortionT1>
+            <distortionT2>0.00000001</distortionT2>
+            <CxPrime>0</CxPrime>
+            <Cx>0</Cx>
+            <Cy>0</Cy>
+            <focalLength>0</focalLength>
+            <hackBaseline>0</hackBaseline>
+            </plugin>
+        </sensor>
+    </gazebo>
+  <!--================================ lidar plugin ============================================-->
+
+    <gazebo reference="${ns}/lidar">
+    <sensor name="sonar" type="ray">
+      <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-3.14</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-0.7854</min_angle>
+            <max_angle>0.7854</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.2</min>
+          <max>50.0</max>
+        </range>
+      </ray>
+      <plugin name="sonar_plugin" filename="libgazebo_ros_block_laser.so">
+        <gaussianNoise>0.00</gaussianNoise>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <topicName>${ns}/points</topicName>
+        <frameName>${ns}/lidar</frameName>
+      </plugin>
+      <always_on>true</always_on>
+      <update_rate>100.0</update_rate>
+    </sensor>
+  </gazebo>
+
+
+  </xacro:macro>
+
+</robot>

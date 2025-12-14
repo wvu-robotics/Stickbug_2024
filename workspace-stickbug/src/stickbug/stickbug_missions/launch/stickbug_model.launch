@@ -1,0 +1,25 @@
+<launch>
+ <!--##################################### OVERVIEW #####################################
+  the purpose of this launch file is to serve as a helper launch file to send the stickbug
+  model to ros parameter server
+  
+  launches:
+   1. "robot_description" to parameter server
+   2. robot state publisher (takes joint_states topic and publishes TF transform)
+
+ -->
+ <!--#################################### ARGUMENTS ########################################-->
+    <arg name="robot_namespace" default="stickbug"/>
+    <arg name="urdf_path" default="$(find stickbug)/urdf/stickbug.urdf.xacro"/>
+    
+    <!-- robot model _____________________________________________________-->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg urdf_path)'"/> 
+
+ <!--#################################### ALGORITHMS ####################################-->
+    <group ns="$(arg robot_namespace)">     
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+            <!--param name="tf_prefix" value="$(arg robot_namespace)"/--> 
+        </node>
+    </group>
+
+</launch>

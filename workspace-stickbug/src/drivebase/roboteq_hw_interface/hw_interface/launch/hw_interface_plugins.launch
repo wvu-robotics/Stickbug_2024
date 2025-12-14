@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- this launch file simply loads the each plugins' launch file -->
+
+<launch>
+ 
+    <include file="$(find hw_interface_plugin_package)/launch/specific_plugin.launch" />
+    
+</launch>

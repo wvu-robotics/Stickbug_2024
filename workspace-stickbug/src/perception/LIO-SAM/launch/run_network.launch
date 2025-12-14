@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="project" default="lio_sam"/>
+    <!-- ROS CONSOLE Logging Level -->
+    <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find lio_sam)/config/liosam_rosconsole.conf"/>
+
+    <!-- Parameters -->
+    <rosparam file="$(find lio_sam)/config/params.yaml" command="load" />
+
+    <!--- LOAM -->
+    <include file="$(find lio_sam)/launch/include/module_loam.launch" />
+
+    <!--- Run Navsat -->
+    <!--- <include file="$(find lio_sam)/launch/include/module_navsat.launch" /> -->
+
+</launch>

@@ -1,0 +1,22 @@
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  manipulator_missions/config/manipulator.yaml
+#
+#
+############################################# NOIS WRIST PARAMETERS ######################################
+
+w1_x : 0        # wrist link 1, x length, in wrist base frame [m]
+w1_y : 0        # wrist link 1, y length, in wrist base frame [m]
+w1_z : 0        # wrist link 1, z length, in wrist base frame [m]
+
+w2_x : 0        # wrist link 2, x length, in wrist motor 1 frame [m] 
+w2_y : 0        # wrist link 2, y length, in wrist motor 1 frame [m]
+w2_z : .024     # wrist link 2, z length, in wrist motor 1 frame [m]
+
+w3_x : 0        # wrist link 3, x length, in wrist motor 2 frame [m]
+w3_y : 0        # wrist link 3, y length, in wrist motor 2 frame [m]
+w3_z : 0.030    # wrist link 3, z length, in wrist motor 2 frame [m]
+
+###########################################################################################################
+

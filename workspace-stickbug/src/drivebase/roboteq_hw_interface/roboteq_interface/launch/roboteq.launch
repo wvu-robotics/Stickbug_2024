@@ -1,0 +1,21 @@
+<!--#################################################### OVERVIEW #################################################################### 
+	The purpose of this launch file is to run  the roboteq motor controllers, and the encoder count to joint angle conversion node
+	
+	launches:
+	1. roboteq control node
+	2. encoder count to joint angle conversion node	
+-->
+<launch>
+	<!--############################################## ARGUMENTS ##################################################################-->
+
+		<!--NOTE a yaml file is needed based on the template provided and is placed in your drivebase_missions/config/drivebase.yaml-->
+		
+	<!--############################################## ALGORITHMS #################################################################-->
+
+	<!-- launch the roboteq node-->
+	<node name = "hw_interface" pkg = "hw_interface" type = "hw_interface_node" output="screen" respawn="true" respawn_delay = "10" />
+	
+	<!-- launch the encoder count to joint angles code-->
+	<!-- <node name="roboteq_joints" pkg="roboteq_interface" type="encoder2joint" output="screen"/> -->
+
+</launch>

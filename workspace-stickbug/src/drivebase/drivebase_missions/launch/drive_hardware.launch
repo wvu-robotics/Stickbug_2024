@@ -1,0 +1,69 @@
+<launch>
+    <!-- #################################### OVERVIEW #########################################
+
+      launch file for all the hardware on the stickbug drivebase agent   
+      
+      launches:
+      1. roboteq
+      2. realsense cameras
+      3. 2d lidar
+      4. zed camera 
+     -->
+    <!--################################### ARGUMENTS ######################################-->
+    <arg name="robot_namespace"      default="stickbug/drivebase"/>
+
+    <!-- zed args_________________________________________-->
+    <arg name="zed_node_name"        default="zed_node" />
+    <arg name="camera_model"         default="zed2i" />
+    <arg name="publish_urdf"         default="true" />   
+    <arg name="camera_name"          default="zed" />
+    <!-- <arg name="base_frame"           default="$(arg robot_namespace)/base_footprint" /> -->
+    <arg name="base_frame"           default="$(arg robot_namespace)/base_footprint" /> 
+
+
+    <!--#################################  ALGORITHMS ###################################-->
+
+    <!-- roboteq _________________________________________________________________-->
+    <include file="$(find roboteq_interface)/launch/roboteq.launch"/>
+
+    <!-- realsenses_____________________________________________________________ -->
+    <!--<include file="$(find drivebase_missions)/launch/stickbug_realsense.launch"/>-->
+
+    <!-- 2d lidar________________________________________________________________ -->
+<!--
+    <node name="hokuyo_2d_lidar" pkg="hokuyo_node"  type="hokuyo_node">
+        <param name="frame_id" value = "$(arg robot_namespace)/laser"/>
+        <param name="/hokuyo_node/port" value="/dev/serial/by-id/usb-Hokuyo_Data_Flex_for_USB_URG-Series_USB_Driver-if00"/>
+    </node>
+-->
+    <!-- ZED __________________________________________________________________________-->
+    <group ns="$(arg camera_name)">
+        <!--ZED Wrapper Node-->
+        <include file="$(find zed_wrapper)/launch/include/zed_camera.launch.xml">
+            <arg name="camera_name"         value="$(arg camera_name)" />
+            <arg name="svo_file"            value="" />
+            <arg name="stream"              value="" />
+            <arg name="node_name"           value="$(arg zed_node_name)" />
+            <arg name="camera_model"        value="$(arg camera_model)" />
+            <arg name="base_frame"          value="$(arg base_frame)" />
+            <arg name="publish_urdf"        value="$(arg publish_urdf)" />
+            <!--Position respect to base frame (i.e. "base_footprint)--> 
+            <arg name="cam_pos_x"           value="0.3880" />
+            <arg name="cam_pos_y"           value="-0.001" />
+            <arg name="cam_pos_z"           value="0.3340" />
+
+
+<!--            <arg name="cam_pos_x"           value="0.159" />
+            <arg name="cam_pos_y"           value="0.0" />
+            <arg name="cam_pos_z"           value="1.884" />
+-->
+            <!--Orientation respect to base frame (i.e. "base_footprint)-->
+            <arg name="cam_roll"            value="0.0" />
+            <arg name="cam_pitch"           value="0.0" />
+            <!-- <arg name="cam_pitch"           value="0.0" /> -->
+            <arg name="cam_yaw"             value="0.0" />
+        </include>    
+
+    </group> 
+    <!--_____________________________________________________________________________-->
+</launch>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<robot name="stickbug" xmlns:xacro="http://wiki.ros.org/xacro">
+
+<!-- links and joints include files-->
+<xacro:include filename="$(find stickbug_base)/urdf/stickbug_base.urdf.xacro"/>
+<xacro:include filename="$(find poll_arm_left)/urdf/poll_arm_left.urdf.xacro" />
+<xacro:include filename="$(find poll_arm_right)/urdf/poll_arm_right.urdf.xacro" />
+
+
+<!-- gazebo plugins include files-->
+<xacro:include filename="$(find stickbug_base)/urdf/stickbug_base.gazebo.xacro" />
+<xacro:include filename="$(find poll_arm_left)/urdf/poll_arm_left.gazebo.xacro" />
+<xacro:include filename="$(find poll_arm_right)/urdf/poll_arm_right.gazebo.xacro" />
+
+
+    <!-- drive train-->
+    <xacro:stickbug_base ns="stickbug/drivebase"/>
+
+    <!-- left arms-->
+    <xacro:poll_arm_left parent_link="stickbug/drivebase/l_lift" ns="stickbug/arm1" />
+    <xacro:poll_arm_left parent_link="stickbug/drivebase/l_lift" ns="stickbug/arm3" />
+    <xacro:poll_arm_left parent_link="stickbug/drivebase/l_lift" ns="stickbug/arm5" />
+
+    <!-- right arms-->
+    <xacro:poll_arm_right parent_link="stickbug/drivebase/r_lift" ns="stickbug/arm2" />
+    <xacro:poll_arm_right parent_link="stickbug/drivebase/r_lift" ns="stickbug/arm4" />
+    <xacro:poll_arm_right parent_link="stickbug/drivebase/r_lift" ns="stickbug/arm6" />
+
+    <!-- top-level gazebo-ros interface-->
+     <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/stickbug</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+
+</robot>

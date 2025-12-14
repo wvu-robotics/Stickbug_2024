@@ -1,0 +1,22 @@
+<launch>
+  <arg name="urdf_path" default="$(find stickbug)/urdf/stickbug.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(arg urdf_path)'"/> 
+
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  
+    
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <!--param name="tf_prefix" value="$(arg robot_namespace)"/--> 
+    </node>
+
+
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param robot_description -model stickbug"
+    output="screen" />
+  <!-- ros_control  launch file -->
+  <include file="$(find stickbug_control)/launch/stickbug_control.launch"/>
+</launch>

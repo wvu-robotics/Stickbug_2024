@@ -1,0 +1,62 @@
+controller_list:
+  - name: fake_right_arm_1_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm2/slider
+      - stickbug/arm2/shoulder
+      - stickbug/arm2/elbow
+      - stickbug/arm2/w1
+      - stickbug/arm2/w2
+  - name: fake_right_arm_2_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm4/slider
+      - stickbug/arm4/shoulder
+      - stickbug/arm4/elbow
+      - stickbug/arm4/w1
+      - stickbug/arm4/w2
+  - name: fake_right_arm_3_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm6/slider
+      - stickbug/arm6/shoulder
+      - stickbug/arm6/elbow
+      - stickbug/arm6/w1
+      - stickbug/arm6/w2
+  - name: fake_left_arm_1_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm1/slider
+      - stickbug/arm1/shoulder
+      - stickbug/arm1/elbow
+      - stickbug/arm1/w1
+      - stickbug/arm1/w2
+  - name: fake_left_am_2_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm3/slider
+      - stickbug/arm3/shoulder
+      - stickbug/arm3/elbow
+      - stickbug/arm3/w1
+      - stickbug/arm3/w2
+  - name: fake_left_arm_3_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - stickbug/arm5/slider
+      - stickbug/arm5/shoulder
+      - stickbug/arm5/elbow
+      - stickbug/arm5/w1
+      - stickbug/arm5/w2
+initial:  # Define initial robot poses per group
+  - group: right_arm_1
+    pose: right_arm_1_home
+  - group: right_arm_2
+    pose: right_arm_2_home
+  - group: right_arm_3
+    pose: right_arm_3_home
+  - group: left_arm_1
+    pose: left_arm_1_home
+  - group: left_am_2
+    pose: left_arm_2_home
+  - group: left_arm_3
+    pose: left_arm_3_home

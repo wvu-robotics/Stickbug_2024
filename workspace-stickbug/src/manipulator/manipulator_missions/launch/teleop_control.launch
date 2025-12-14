@@ -1,0 +1,40 @@
+ <launch>
+ <!--###################################### OVERVIEW ##########################################
+  The purpose of this launch file is to serve as the high-level launch file for the teleop control
+  mission for the stickbug manipulator 
+
+  launches:
+    1. manipulator teleop node (joy and joy mapper)
+    2. manipulator position inverse kinematics
+    3. hardware vs. simulation
+
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <arg name="robot_namespace" default="arm0"/>
+  <arg name="use_hardware"    default="true"/>
+  <arg name="is_right_arm"    default="false"/>
+  
+  <group ns="$(arg robot_namespace)">
+      <rosparam command="load" file="$(find manipulator_missions)/config/manipulator.yaml" subst_value="true"/>
+  </group>
+
+ <!--###################################### ALGORITHMS #########################################-->
+ <group ns="$(arg robot_namespace)">
+   
+     <!-- teleop _______________________________________________________________________-->
+    <node pkg="manipulator_teleop" name="arm_joy_control" type="manipulator_telop"/>
+
+    <!-- manipulator position kinematics_______________________________________________ -->
+    <include file="$(find manipulator_missions)/launch/manipulator_kinematics.launch">
+      <arg name="is_right_arm" value="$(arg is_right_arm)"/>
+    </include>
+
+    <!-- hardware vs simulation_________________________________________________________-->
+    <group if="$(eval use_hardware == true)">
+      <!-- launch manipulator hardware -->
+      <include file="$(find manipulator_missions)/launch/hardware.launch"/>
+    </group>
+    
+ </group>
+
+</launch>

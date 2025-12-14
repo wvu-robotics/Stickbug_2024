@@ -1,0 +1,30 @@
+<launch>
+ <!--###################################### OVERVIEW ##########################################
+  the purpose of this launch file is to be a helper launch file, that houses the manipulator,
+  position inverse kinematics 
+  
+  launches:
+   1. manipultor mux node
+   2. arm inverse kinematics
+   3. wrist inverse kinematics
+ -->
+ <!--##################################### ARGUMENTS ##########################################-->
+  <arg name="is_right_arm" default="false"/>
+  <rosparam param="is_right_arm" subst_value="True">$(arg is_right_arm)</rosparam>
+  
+ <!--###################################### ALGORITHMS #########################################-->
+ 
+    <!-- manipulator mux node -->
+    <node name="manipulator_mux" pkg="simple_manipulation_goal" type="manipulator_to_pose" output="screen"/>
+
+    <!-- arm inverse kinematics -->
+    <include file="$(find scara_arm_ik)/launch/scara_arm_ik.launch"/>
+
+    <!--  wrist inverse kinematics --> 
+    <include file="$(find sphere_wrist)/launch/sphere_wrist.launch"/>
+
+    <!-- end effector kinematics -->
+    <include file="$(find pollination_ee)/launch/pollination_ee.launch"/>
+
+
+</launch>

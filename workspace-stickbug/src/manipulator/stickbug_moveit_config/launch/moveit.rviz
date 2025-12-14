@@ -1,0 +1,1235 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /MotionPlanning1/Planning Request1
+      Splitter Ratio: 0.5
+    Tree Height: 836
+  - Class: rviz/Help
+    Name: Help
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Acceleration_Scaling_Factor: 0.1
+      Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      Move Group Namespace: ""
+      MoveIt_Allow_Approximate_IK: false
+      MoveIt_Allow_External_Program: false
+      MoveIt_Allow_Replanning: false
+      MoveIt_Allow_Sensor_Positioning: false
+      MoveIt_Planning_Attempts: 10
+      MoveIt_Planning_Time: 5
+      MoveIt_Use_Cartesian_Path: false
+      MoveIt_Use_Constraint_Aware_IK: false
+      MoveIt_Workspace:
+        Center:
+          X: 0
+          Y: 0
+          Z: 0
+        Size:
+          X: 2
+          Y: 2
+          Z: 2
+      Name: MotionPlanning
+      Planned Path:
+        Color Enabled: false
+        Interrupt Display: false
+        Links:
+          All Links Enabled: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          stickbug/arm1/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm1/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm2/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm3/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm4/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm5/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm6/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/b_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/base_footprint:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/drivebase/d355:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/fl_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/fr_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/l_lift:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/lidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/r_lift:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/zed:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Loop Animation: true
+        Robot Alpha: 0.5
+        Robot Color: 150; 50; 150
+        Show Robot Collision: false
+        Show Robot Visual: true
+        Show Trail: false
+        State Display Time: 0.05 s
+        Trail Step Size: 1
+        Trajectory Topic: move_group/display_planned_path
+        Use Sim Time: false
+      Planning Metrics:
+        Payload: 1
+        Show Joint Torques: false
+        Show Manipulability: false
+        Show Manipulability Index: false
+        Show Weight Limit: false
+        TextHeight: 0.07999999821186066
+      Planning Request:
+        Colliding Link Color: 255; 0; 0
+        Goal State Alpha: 1
+        Goal State Color: 250; 128; 0
+        Interactive Marker Size: 0.10000000149011612
+        Joint Violation Color: 255; 0; 255
+        Planning Group: right_arm_3
+        Query Goal State: true
+        Query Start State: false
+        Show Workspace: false
+        Start State Alpha: 1
+        Start State Color: 0; 255; 0
+      Planning Scene Topic: move_group/monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 1
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.009999999776482582
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          stickbug/arm1/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm1/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm1/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm2/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm2/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm3/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm3/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm4/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm4/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm5/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm5/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/bicep:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/cam_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/arm6/e1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/e2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/e3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/end_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/forearm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/w1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/arm6/w2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/b_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/base_footprint:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/camera_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          stickbug/drivebase/d355:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/fl_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/fr_wheel:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/l_lift:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/lidar:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/r_lift:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          stickbug/drivebase/zed:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Robot Alpha: 0.5
+        Show Robot Collision: false
+        Show Robot Visual: true
+      Value: true
+      Velocity_Scaling_Factor: 0.1
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm1 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm1/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm2 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm2/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm3 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm3/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm4 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm4/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm5 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm5/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 238; 238; 236
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm6 raw
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm6/raw_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 252; 233; 79
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm1 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm1/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 0; 255; 0
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm2 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm2/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 252; 233; 79
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm3 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm3/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 237; 212; 0
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm4 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm4/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 237; 212; 0
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm5 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm5/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 237; 212; 0
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm6 unpoll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm6/unpollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 0; 255; 0
+      Enabled: true
+      Head Length: 0.019999999552965164
+      Head Radius: 0.019999999552965164
+      Name: arm1 poll
+      Queue Size: 10
+      Shaft Length: 0.05000000074505806
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm1/pollenated_flowers
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 115; 210; 22
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: arm3 poll
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (3D)
+      Topic: /stickbug/arm3/pollenated_flowers
+      Unreliable: false
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm1/hit_box
+      Name: arm1 hit
+      Namespaces:
+        bounding_box_cube: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm2/hit_box
+      Name: arm2 hit
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm3/hit_box
+      Name: arm3 hit
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm4/hit_box
+      Name: arm4 hit
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm5/hit_box
+      Name: arm5 hit
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm6/hit_box
+      Name: arm6 hit
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm2/reached_box
+      Name: right reach
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /stickbug/arm1/reached_box
+      Name: left reach
+      Namespaces:
+        bound_cylinder: true
+      Queue Size: 100
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: stickbug/drivebase/base_footprint
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 0.9285880327224731
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.75
+      Focal Point:
+        X: 0.4950058162212372
+        Y: 0.3994637429714203
+        Z: 0.850989580154419
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 1.169796347618103
+      Target Frame: stickbug/drivebase/base_footprint
+      Yaw: 1.8118500709533691
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: true
+  Height: 752
+  Help:
+    collapsed: false
+  Hide Left Dock: true
+  Hide Right Dock: false
+  MotionPlanning:
+    collapsed: true
+  MotionPlanning - Trajectory Slider:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000001f30000039efc0200000006fc0000003d0000039e0000000000fffffffaffffffff0100000002fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670000000000ffffffff000001f300fffffffb000000100044006900730070006c0061007900730000000000000001f30000015600fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a00560069006500770073000000010c000000a4000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016000002950000029600000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 661
+  X: 668
+  Y: 191

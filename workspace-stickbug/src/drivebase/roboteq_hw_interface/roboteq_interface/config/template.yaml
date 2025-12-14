@@ -1,0 +1,34 @@
+
+################################################### IMPORTANT !!!!!!!! #################################
+#
+# note that this is a template yaml file and the real one for your robot should be pasted into
+#  drivebase_missions/config/drivebase.yaml
+#
+#
+############################################################ ROBOTEQ PARAMETERS #######################
+plugin_names:
+    {
+        brushed : hw_interface_plugin_roboteq
+    }
+
+brushed: # For every roboteq add a new line in this block with a name to describe it e.g. "left_roboteq"
+    {
+        Controller_Name : Controller_Name,
+    }
+
+Controller_Name: # For every controller_name (every roboteq) in "brushed" copy this *entire* block and adjust
+    {
+        deviceName         : "/dev/serial/by-id/usb-Roboteq_Motor_Controller_SDC3XXX-if00",
+        baudrate           : 115200,
+        subscribeToTopic   : "roboteq/cmd_input",
+        publishToTopic     : "roboteq/feedback",
+        controllerType     : "Three_Channel",
+        initializationCmd  : "encoder_counter_absolute feedback motor_amps battery_amps",
+        initCmdCycle       : 20,
+        wheelType          : "",
+    }
+gear_ratio : 45.5
+encoder_counts_per_revolution : 500
+roboteq_topic_name : "roboteq/feedback"
+joint_state_out_topic_name : "drivebase_joints"
+#######################################################################################################

@@ -1,0 +1,8 @@
+      
+<launch>
+      <arg name="arm_number" default="1"/>
+      <!--visual servoing_________________________________________________________________-->
+      <node pkg="rightarm_moveit_config" name="pose_servo_$(arg arm_number)" type="pose_servo.py" output="screen" args="$(arg arm_number)"/>
+      
+</launch>
+

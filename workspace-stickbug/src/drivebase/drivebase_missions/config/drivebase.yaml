@@ -1,0 +1,75 @@
+############################################################# OVERVIEW ##################################################
+#  this file serves as the common yaml file holding all the parameters for the drivebase entity of the robot,
+#  SPECIFIC TO THE STICKBUG DRIVEBASE
+#
+#  NOTE: that muliple packages may require the same parameter. Therfore, only create one instance in this file, and comment
+#        any duplicates
+#  
+#  sections of paramters:
+#   1. roboteqs
+#   2. drive kinematics
+#   3. simple waypoint nav
+################################################ ROBOTEQ PARAMTERS #######################################################
+plugin_names:
+    {
+        brushed : hw_interface_plugin_roboteq # type of plug in used (do not change)
+    }
+
+brushed:
+    {
+        Controller_Name : Controller_Name, # name of roboteq controller (left / right)
+    }
+
+Controller_Name:
+    {
+        deviceName         : "/dev/serial/by-id/usb-Roboteq_Motor_Controller_SDC3XXX-if00", #path to roboteq device (USE UDEV RULES)
+        baudrate           : 115200,                   # baudrate of roboteq (do not change)
+        subscribeToTopic   : "roboteq/cmd_input",      # topic to subscribe to get motor commands from
+        publishToTopic     : "roboteq/feedback",       # topic to publish to get motor feedback (encoder count, etc.)
+        controllerType     : "Three_Channel",          # type of roboteq (Three_Channel or Two_Channel)
+        initializationCmd  : "encoder_counter_absolute feedback motor_amps battery_amps", # what feedback you want from roboteq
+        initCmdCycle       : 20,       # do not change
+        wheelType          : "",       # do not change
+    }
+gear_ratio : 2.0 #45.5                                 # gear ratio between the encoder shaft and ouput shaft on the motor
+encoder_counts_per_revolution : 500               # encoder counts per revolution of the encoder on the motor
+roboteq_topic_name : "roboteq/feedback"           # NOTE THIS SHOULD BE THE SAME AS "publishToTopic" parameter
+joint_state_out_topic_name : "drivebase_joints"   # the topic of the joint angles for the motors
+
+############################################# KIWI DRIVE KINEMATICS PARAMETERS ############################################
+max_speed : 6         # maximum angular speed of the robot's motors [rad/s]
+wheel_radius : .10    # wheel radius in [m]
+min_signal : -1000    # lowest signal value accepted by motor controller (full reverse)
+max_signal : 1000     # highest signal value accepted by motor controller (full forward)
+
+robot_radius : .31                   # radius from geometric centroid of robot to center of wheel [m]
+beta : 1.04719666                    # angle offset between the x axis and motors 2 and 3 [rad]
+
+# previously satisfied by ROBOTEQ PARAMETERS
+#gear_ratio : 1                       # gear ratio of the motor
+#encoder_counts_per_revolution : 500  # how many counts the encoder makes to make one full wheel rotation
+
+############################################# SIMPLE WAYPOINT NAV PARAMETERS ###############################################
+Kdist_p : .5          # proportional gain for linear motion
+Kdist_i : .0001       # integral gain for linear motion
+Kdist_d : .01         # derivative gain for linear motion
+
+Kang_p : .1           # proportional gain for angular motion
+Kang_i : .0001        # integral gain for angular motion
+Kang_d : .01          # derrivative gain for angular motion
+
+max_vel : .5          # maximum linear velocity in one direction of the drivebase [m/s]
+max_ang_vel : 2.3     # maximum angular velocity in one direction of the drivebase [rad/s]
+############################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
