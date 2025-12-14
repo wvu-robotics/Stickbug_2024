@@ -80,30 +80,6 @@ The code was tested in a  Ubuntu 20.04 machine with ROS Noetic
   sudo apt install ros-noetic-move-base
 
   ```
-  
-
-
-
-### Installation
-   ```sh
-   git clone git@github.com:wvu-robotics/workspace-stickbug.git
-   cd workspace-stickbug
-   wstool init src stickbug-ssh.rosinstall 
-   rosdep install --from-paths src --ignore-src -r -y
-   ###Install  
- 
-   catkin_make -k
-   echo "done installing"
-   
-   ```
-### Update
-   in the workspace-stickbug folder
-   ```sh
-  wstool update -t src
-  catkin_make -k
-  echo "done updating"
-   
-   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -120,23 +96,7 @@ to launch waypoint control and manipulator go to pose use
 ```
 NOTE: to switch to simulation change the argument "use_hardware" to false
 
-## Roadmap
-#### Simulation
 
-#### Real Robot
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-## Contributing
-Contribution to the project are greatly appreciated. 
-
-when contibuting:  
- IF: code can be reused by another robot/project, place in its own package, and include into the .rosinstall here  
- ELSE IF: it is only usable by the drivebase, include into drivebase_missions package  
- ELSE IF: it is only usable by a manipulator, include into manipulator_missions package  
- ELSE: it involves communication or usage between agents include into the stickbug_missions package  
- 
- REMEMBER!!! ensure that each agent (arm or drivebase) should still remain single agents that could be run seperately
 
 ## License
 
@@ -150,8 +110,6 @@ Trevor Smith trs0024@mix.wvu.edu
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Acknowledgements
-This project was funded by the *** TODO (Add funding agency)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
